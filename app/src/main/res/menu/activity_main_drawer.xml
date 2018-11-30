@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_stores"
+                android:icon="@drawable/baseline_location_on_24"
+                android:title="Stores"/>
+        <item
+                android:id="@+id/nav_orders"
+                android:icon="@drawable/baseline_bookmark_border_24"
+                android:title="Orders"/>
+        <item
+                android:id="@+id/nav_options"
+                android:icon="@drawable/baseline_build_24"
+                android:title="Options"/>
+        <item
+                android:id="@+id/nav_about_us"
+                android:icon="@drawable/baseline_info_24"
+                android:title="About Us"/>
+        <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/baseline_power_settings_new_24"
+                android:title="Log Out"/>
+    </group>
+</menu>
