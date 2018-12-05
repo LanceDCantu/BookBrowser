@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "365422859265",
+    "firebase_url": "https://bookbrowser-9108e.firebaseio.com",
+    "project_id": "bookbrowser-9108e",
+    "storage_bucket": "bookbrowser-9108e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365422859265:android:4644ea4b3afbfd9d",
+        "android_client_info": {
+          "package_name": "com.example.lance.bookbrowser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365422859265-msj5r7k3gcj9idpcc68bguro533vfbik.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lance.bookbrowser",
+            "certificate_hash": "3f8d3fd82112850e854d8e307ddbd18285382ff3"
+          }
+        },
+        {
+          "client_id": "365422859265-uu2btreau0ha1gvsvq159mb1bia7jkc2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANW4mBuTQw5IxQB8BlTvFmGMOxXImRi0Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365422859265-uu2btreau0ha1gvsvq159mb1bia7jkc2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
