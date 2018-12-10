@@ -33,4 +33,5 @@
     <string name="subtotal">"Subtotal = price+$$$"</string>
     <string name="title_activity_cartview">cartview</string>
     <string name="title_activity_cart">cart</string>
+    <string name="title_activity_login">login</string>
 </resources>

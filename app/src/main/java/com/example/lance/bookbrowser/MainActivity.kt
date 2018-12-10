@@ -90,6 +90,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 //intent.putExtra("keyIdentifier", value)
                 startActivity(intent)
             }
+            R.id.nav_login -> {
+                val intent = Intent(this, login::class.java)
+                //intent.putExtra("keyIdentifier", value)
+                startActivity(intent)
+            }
             R.id.nav_logout -> {
                 finish()  // This call is missing.
             }
