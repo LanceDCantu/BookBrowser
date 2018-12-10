@@ -27,4 +27,10 @@
     <string name="title_activity_store_locater">
         "Map"
     </string>
+    <string name="no_of_items">"Number of items = XXX"</string>
+    <string name="total_price">"Price = Items X price"</string>
+    <string name="taxes">"Taxes = $$$"</string>
+    <string name="subtotal">"Subtotal = price+$$$"</string>
+    <string name="title_activity_cartview">cartview</string>
+    <string name="title_activity_cart">cart</string>
 </resources>

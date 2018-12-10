@@ -72,7 +72,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
             R.id.nav_orders -> {
-
+                val intent = Intent(this, cart::class.java)
+                //intent.putExtra("keyIdentifier", value)
+                startActivity(intent)
             }
             R.id.nav_options -> {
 

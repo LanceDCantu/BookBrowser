@@ -44,6 +44,11 @@
                 android:name=".StoreLocater"
                 android:label="@string/title_activity_store_locater">
         </activity>
+        <activity
+                android:name=".cart"
+                android:label="@string/title_activity_cart"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
