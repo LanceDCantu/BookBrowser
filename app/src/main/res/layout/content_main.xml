@@ -16,6 +16,69 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+        <android.support.constraint.ConstraintLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="128dp"
+                    app:layout_constraintStart_toStartOf="parent" android:id="@+id/linearLayout"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintEnd_toStartOf="@+id/button2" android:layout_marginEnd="35dp"
+            >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/book_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/author_name"
+                        android:textSize="12sp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price"
+                        android:textSize="18sp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reviews"
+                        android:textSize="12sp"/>
+            </LinearLayout>
+
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="start"
+                    android:contentDescription="@string/book_title"
+                    app:srcCompat="@drawable/baseline_book_24"
+                    tools:src="@drawable/baseline_book_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="4dp" android:id="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+                    android:layout_marginEnd="5dp"/>
+            <Button
+                    android:text="Add Item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button2"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="43dp"/>
+
+        </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -62,57 +125,15 @@
                         android:contentDescription="@string/book_title"
                         app:srcCompat="@drawable/baseline_book_24"
                         tools:src="@drawable/baseline_book_24"
-                        app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="4dp"/>
-
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
+                <Button
+                        android:text="Add Item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
+                        android:id="@+id/button3"
+                        app:layout_constraintStart_toEndOf="@+id/linearLayout" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginEnd="43dp" tools:ignore="DuplicateIds,NotSibling"/>
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
                     android:orientation="vertical"

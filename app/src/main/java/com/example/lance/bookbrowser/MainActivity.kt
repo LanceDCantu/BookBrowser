@@ -9,16 +9,38 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
+import com.example.lance.bookbrowser.notification.NotificationCountSetClass
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 import com.google.firebase.database.*
 import com.google.firebase.database.core.Constants
+import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private val ref = FirebaseDatabase.getInstance().reference
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.button2->{
+                cartItems++
+                NotificationCountSetClass.setNotifyCount(cartItems)
+                invalidateOptionsMenu() //refresh counter
+            }
+
+            R.id.button3->{
+                cartItems--
+                NotificationCountSetClass.setNotifyCount(cartItems)
+                invalidateOptionsMenu() //refresh counter
+            }
+
+        }
+    }
+
+    var cartItems = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,13 +67,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
             nav_view.setNavigationItemSelectedListener(this)
+
+
         }
+
+        button2.setOnClickListener(this)
+        button3.setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        var item = menu.findItem(R.id.action_cart)
+        NotificationCountSetClass.setAddToCart(this@MainActivity, item, cartItems!!)
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onBackPressed() {
@@ -90,4 +123,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
 }
