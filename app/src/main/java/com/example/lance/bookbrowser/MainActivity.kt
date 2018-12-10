@@ -1,15 +1,22 @@
 package com.example.lance.bookbrowser
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.constraint.Group
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
+import android.widget.SearchView
 import android.widget.Toast
 import com.example.lance.bookbrowser.notification.NotificationCountSetClass
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,7 +24,6 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 import com.google.firebase.database.*
 import com.google.firebase.database.core.Constants
-import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -47,11 +53,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val test_string = "Price"
+        //val test_string = "Price"
 
-        val newItem = ref.child(test_string).push()
+        //val newItem = ref.child(test_string).push()
         //then, we used the reference to set the value on that ID
-        newItem.setValue(2.14)
+        //newItem.setValue(2.14)
+
+        val book1btn = findViewById<Button>(R.id.book_1_button)
+        book1btn?.setOnClickListener {
+            Toast.makeText(this, "we did it!", Toast.LENGTH_SHORT).show()
+        }
 
         toolbar.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -63,12 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer_layout.addDrawerListener(toggle)
             toggle.syncState()
 
-
-
-
             nav_view.setNavigationItemSelectedListener(this)
-
-
         }
 
         button2.setOnClickListener(this)
@@ -78,6 +84,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+
+        // Get the SearchView and set the searchable configuration
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        (menu.findItem(R.id.app_bar_search).actionView as SearchView).apply {
+            // Assumes current activity is the searchable activity
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+            setIconifiedByDefault(false) // Do not iconify the widget; expand it by default
+        }
         return true
     }
 
@@ -105,7 +119,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
             R.id.nav_orders -> {
-
+                val intent = Intent(this, cart::class.java)
+                //intent.putExtra("keyIdentifier", value)
+                startActivity(intent)
             }
             R.id.nav_options -> {
 
@@ -115,14 +131,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 //intent.putExtra("keyIdentifier", value)
                 startActivity(intent)
             }
+            R.id.nav_login -> {
+                val intent = Intent(this, login::class.java)
+                //intent.putExtra("keyIdentifier", value)
+                startActivity(intent)
+            }
             R.id.nav_logout -> {
-
+                finish()  // This call is missing.
             }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
-
-
 }
