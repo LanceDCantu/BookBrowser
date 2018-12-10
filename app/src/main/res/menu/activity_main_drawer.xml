@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
+      xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
       tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
@@ -8,6 +8,10 @@
                 android:id="@+id/nav_stores"
                 android:icon="@drawable/baseline_location_on_24"
                 android:title="Stores"/>
+        <item
+                android:id="@+id/app_bar_search"
+                android:icon="@drawable/ic_search_black_24dp"
+                android:title="@string/search_title" app:actionViewClass="android.widget.SearchView"/>
         <item
                 android:id="@+id/nav_orders"
                 android:icon="@drawable/baseline_bookmark_border_24"
