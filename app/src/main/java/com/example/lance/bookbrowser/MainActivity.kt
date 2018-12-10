@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 import com.google.firebase.database.*
 import com.google.firebase.database.core.Constants
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -31,6 +32,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onClick(v: View?) {
         when(v?.id){
+            R.id.book_1_button->{
+                val intent = Intent(this, BookInfo::class.java)
+                //intent.putExtra("keyIdentifier", value)
+                startActivity(intent)
+            }
+            /*
+
             R.id.button2->{
                 cartItems++
                 NotificationCountSetClass.setNotifyCount(cartItems)
@@ -43,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 invalidateOptionsMenu() //refresh counter
             }
 
-        }
+        */}
     }
 
     var cartItems = 0
@@ -76,9 +84,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             nav_view.setNavigationItemSelectedListener(this)
         }
-
-        button2.setOnClickListener(this)
-        button3.setOnClickListener(this)
+        book_1_button.setOnClickListener(this)
+        //button2.setOnClickListener(this)
+        //button3.setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -94,12 +102,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         return true
     }
-
+/*
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         var item = menu.findItem(R.id.action_cart)
         NotificationCountSetClass.setAddToCart(this@MainActivity, item, cartItems!!)
         return super.onPrepareOptionsMenu(menu)
-    }
+    }*/
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
