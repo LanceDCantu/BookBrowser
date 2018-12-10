@@ -17,10 +17,21 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
             <android.support.constraint.ConstraintLayout
+                    android:id="@+id/book_1"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
 
+                <Button
+                        android:id="@+id/book_1_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -67,10 +78,80 @@
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
+                    android:id="@+id/book_2"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
 
+                <Button
+                        android:id="@+id/book_2_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="128dp"
+                        app:layout_constraintStart_toStartOf="parent">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="@string/book_title"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/author_name"
+                            android:textSize="12sp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/price"
+                            android:textSize="18sp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/reviews"
+                            android:textSize="12sp"/>
+                </LinearLayout>
+
+
+                <ImageView
+                        android:layout_width="123dp"
+                        android:layout_height="95dp"
+                        android:layout_gravity="start"
+                        android:contentDescription="@string/book_title"
+                        app:srcCompat="@drawable/baseline_book_24"
+                        tools:src="@drawable/baseline_book_24"
+                        android:layout_marginTop="4dp"/>
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                    android:id="@+id/book_3"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+                <Button
+                        android:id="@+id/book_3_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -118,7 +199,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_4_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -166,7 +256,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_5_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -214,7 +313,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_6_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -262,7 +370,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_7_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -310,7 +427,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_8_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -358,7 +484,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_9_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -406,7 +541,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_10_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -454,7 +598,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_11_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -502,7 +655,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_12_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -550,7 +712,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_13_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -598,7 +769,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_14_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -646,7 +826,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_15_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -694,7 +883,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_16_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -742,7 +940,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_17_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -790,7 +997,16 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
-
+                <Button
+                        android:id="@+id/book_18_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/book_item_bg_stroke"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -834,55 +1050,5 @@
                         tools:src="@drawable/baseline_book_24"
                         android:layout_marginTop="4dp"/>
             </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-
-
         </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
