@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
             android:id="@+id/action_cart"
@@ -14,10 +15,9 @@
             android:icon="@drawable/baseline_account_circle_24"
             app:showAsAction="ifRoom" />
     <item
-            android:orderInCategory="400"
-            android:id="@+id/app_bar_search"
-            android:icon="@drawable/ic_search_black_24dp"
-            android:title="@string/search_title"
-            app:actionViewClass="android.widget.SearchView"
-            app:showAsAction="ifRoom"/>
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:orderInCategory="400"
+        android:title="@string/search_title"
+        app:showAsAction="collapseActionView|ifRoom" />
 </menu>
