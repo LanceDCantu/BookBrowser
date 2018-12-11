@@ -31,6 +31,12 @@ import kotlinx.android.synthetic.main.book_info.*
 class BookInfo : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
+            R.id.checkReviews->{
+                val intent = Intent(this, reviews::class.java)
+                //intent.putExtra("keyIdentifier", value)
+                startActivity(intent)
+            }
+            //this code will help with updating the cart
 /*
             R.id.addButton->{
                 cartItems++
@@ -54,8 +60,10 @@ class BookInfo : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.book_info)
 
         addButton.setOnClickListener(this)
+        checkReviews.setOnClickListener(this)
 
     }
+    //this code will help with updating the cart
 /*
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         var item = menu.findItem(R.id.action_cart)

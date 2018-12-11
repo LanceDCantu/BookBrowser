@@ -89,14 +89,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/addReview"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="37dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="37dp"
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"/>
     <Button
             android:text="See Reviews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkReviews" android:layout_marginTop="37dp"
+            android:id="@+id/checkReviews"
+            android:layout_marginTop="37dp"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"/>
 

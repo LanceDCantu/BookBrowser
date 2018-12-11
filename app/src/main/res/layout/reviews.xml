@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".reviews">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review1"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review2"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review3"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review4"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review5"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review6"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review7"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review8"
+                android:text="Sodales mattis sit lorem urna. Vulputate. Mattis nascetur ultrices mattis hac porttitor. Aliquet. Mi. Leo porta scelerisque morbi purus fringilla rutrum sed class. Ultricies felis. Senectus sed magna. Posuere lectus iaculis quisque habitant a lacinia felis ullamcorper amet est leo netus class dapibus mus non semper a facilisi ornare euismod."/>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

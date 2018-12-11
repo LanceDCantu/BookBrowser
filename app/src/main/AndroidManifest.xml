@@ -49,6 +49,12 @@
                 android:name=".BookInfo">
         </activity>
         <activity
+                android:name=".BookInfo">
+        </activity>
+        <activity
+                android:name=".reviews">
+        </activity>
+        <activity
                 android:name=".login"
                 android:label="@string/title_activity_login"
                 android:theme="@style/AppTheme.NoActionBar">
