@@ -13,6 +13,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -38,6 +39,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val book1btn = findViewById<Button>(R.id.book_1_button)
         book1btn?.setOnClickListener {
             Toast.makeText(this, "we did it!", Toast.LENGTH_SHORT).show()
+            val textView: TextView = findViewById(R.id.book_1_price)
+            textView.text = "$5.23";
         }
 
         toolbar.setOnClickListener { view ->
