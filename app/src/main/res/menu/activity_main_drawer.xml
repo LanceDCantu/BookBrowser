@@ -9,9 +9,9 @@
                 android:icon="@drawable/baseline_location_on_24"
                 android:title="Stores"/>
         <item
-                android:id="@+id/app_bar_search"
+                android:id="@+id/nav_search"
                 android:icon="@drawable/ic_search_black_24dp"
-                android:title="@string/search_title" app:actionViewClass="android.widget.SearchView"/>
+                android:title="@string/search_title" />
         <item
                 android:id="@+id/nav_orders"
                 android:icon="@drawable/baseline_bookmark_border_24"
