@@ -92,14 +92,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-
-        // Get the SearchView and set the searchable configuration
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        (menu.findItem(R.id.app_bar_search).actionView as SearchView).apply {
-            // Assumes current activity is the searchable activity
-            setSearchableInfo(searchManager.getSearchableInfo(componentName))
-            setIconifiedByDefault(false) // Do not iconify the widget; expand it by default
-        }
         return true
     }
 /*
@@ -118,6 +110,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        Log.e("MainActivity", "Navidation item selected " + item.itemId)
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_stores -> {
@@ -125,6 +118,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this, StoreLocater::class.java)
                 //intent.putExtra("keyIdentifier", value)
                 startActivity(intent)
+            }
+            R.id.nav_search -> {
+               onSearchRequested()
             }
             R.id.nav_orders -> {
                 val intent = Intent(this, cart::class.java)
@@ -151,5 +147,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        Log.e("MainActivity", "Option item selected " + item?.itemId)
+        when(item?.itemId)
+        {
+            R.id.app_bar_search -> {
+                Log.e("MainActivity", " calling onSearchRequested")
+                onSearchRequested()
+                return true
+            }
+            else -> {
+               return super.onOptionsItemSelected(item)
+            }
+        }
     }
 }
