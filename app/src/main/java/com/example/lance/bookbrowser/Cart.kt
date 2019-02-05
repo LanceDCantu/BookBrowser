@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import kotlinx.android.synthetic.main.activity_cart.*
 
-class cart : AppCompatActivity() {
+class Cart : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

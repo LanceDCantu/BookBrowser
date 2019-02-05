@@ -1,4 +1,10 @@
 <resources>
+    <string-array name="stores_array">
+        <item>Select Store</item>
+        <item>Grassroots Books</item>
+        <item>Sundance Books</item>
+        <item>Book Gallery Reno</item>
+    </string-array>
     <string name="app_name">Book Browser</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -21,17 +27,30 @@
     <string name="price">
         "$2.14"
     </string>
-    <string name="reviews">
+    <string name="num_reviews">
         "7 Reviews"
     </string>
     <string name="title_activity_store_locater">
         "Map"
     </string>
-    <string name="no_of_items">"Number of items = XXX"</string>
-    <string name="total_price">"Price = Items X price"</string>
-    <string name="taxes">"Taxes = $$$"</string>
-    <string name="subtotal">"Subtotal = price+$$$"</string>
+    <string name="user_ratings">
+        "User Ratings"
+    </string>
+    <string name="reviews">
+        "Reviews"
+    </string>
+    <string name="subtotal">"Subtotal"</string>
     <string name="title_activity_cartview">cartview</string>
-    <string name="title_activity_cart">cart</string>
+    <string name="title_activity_cart">Cart</string>
     <string name="title_activity_login">login</string>
+    <string name="search_title">Search</string>
+    <string name="search_suggestion">author or title</string>
+    <string name="avg_rating">4.6</string>
+    <string name="fees">Fees</string>
+    <string name="tax">Tax</string>
+    <string name="total">Total</string>
+    <string name="total_value">$19.41</string>
+    <string name="tax_value">$0.85</string>
+    <string name="fees_value">$0.00</string>
+    <string name="subtotal_value">$18.54</string>
 </resources>

@@ -4,17 +4,14 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-    <!-- Product ID #: int	Description: string	Name: String	Price: float -->
-
+        android:layout_weight="1"
+        tools:context=".Cart">
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical">
         <android.support.constraint.ConstraintLayout
                 android:orientation="vertical"
@@ -46,12 +43,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/price"
                         android:textSize="18sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviews"
-                        android:textSize="12sp"/>
             </LinearLayout>
 
 
@@ -94,12 +85,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/price"
                         android:textSize="18sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviews"
-                        android:textSize="12sp"/>
             </LinearLayout>
 
 
@@ -142,12 +127,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/price"
                         android:textSize="18sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviews"
-                        android:textSize="12sp"/>
             </LinearLayout>
 
 
@@ -190,12 +169,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/price"
                         android:textSize="18sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviews"
-                        android:textSize="12sp"/>
             </LinearLayout>
 
 
@@ -238,12 +211,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/price"
                         android:textSize="18sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviews"
-                        android:textSize="12sp"/>
             </LinearLayout>
 
 
@@ -286,12 +253,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/price"
                         android:textSize="18sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviews"
-                        android:textSize="12sp"/>
             </LinearLayout>
 
 

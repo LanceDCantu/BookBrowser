@@ -1,506 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_gravity="bottom">
+
+    <include
+        layout="@layout/content_cart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        tools:context=".MainActivity">
-    <android.support.v4.widget.NestedScrollView
+        android:layout_weight="2"/>
+
+    <!-- GOOD LESSON HERE: both of these layouts (included above and linear below have 0dp height,
+    but with the layout_weight attribute, I've decided the percentage of the screen that they fill up,
+    if they are equal it's shared 50/50 in this case the are 80/20 since I wanted content to be bigger-->
+
+    <View
             android:layout_width="match_parent"
-            android:layout_height="400dp">
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginBottom="5dp"
+    />
 
-        <!-- Product ID #: int	Description: string	Name: String	Price: float -->
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="128dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/book_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/author_name"
-                            android:textSize="12sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/price"
-                            android:textSize="18sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reviews"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-
-                <ImageView
-                        android:layout_width="123dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/book_title"
-                        app:srcCompat="@drawable/baseline_book_24"
-                        tools:src="@drawable/baseline_book_24"
-                        android:layout_marginTop="4dp"/>
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp">
-
-        <!-- Product ID #: int	Description: string	Name: String	Price: float -->
-
+        android:layout_height="200dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-            <android.support.constraint.ConstraintLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_gravity="left">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/subtotal"
+                    android:textSize="22sp"/>
 
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="10dp"
-                        app:layout_constraintStart_toStartOf="parent">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/no_of_items"
-                            android:textSize="20sp"
-                            android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/fees"
+                    android:textSize="22sp"/>
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/total_price"
-                            android:textSize="20sp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/tax"
+                    android:textSize="22sp"/>
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/taxes"
-                            android:textSize="20sp"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/subtotal"
-                            android:textSize="20sp"/>
-                </LinearLayout>
-            </android.support.constraint.ConstraintLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textSize="26sp"
+                    android:textStyle="bold"/>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_gravity="end">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/subtotal_value"
+                    android:textSize="22sp"
+                    android:gravity="right" android:layout_gravity="right"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/fees_value"
+                    android:textSize="22sp"
+                    android:gravity="right" android:layout_gravity="right"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/tax_value"
+                    android:textSize="22sp"
+                    android:gravity="right" android:layout_gravity="right"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_value"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:gravity="right" android:layout_gravity="right"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
