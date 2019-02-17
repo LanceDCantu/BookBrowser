@@ -53,4 +53,22 @@
     <string name="tax_value">$0.85</string>
     <string name="fees_value">$0.00</string>
     <string name="subtotal_value">$18.54</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="change">Change</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="change_password">Change Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="market_statistics">My Market</string>
+    <string name="sales_made">Successful Sales</string>
+    <string name="market_user_ratings">User Ratings</string>
+    <string name="sales_number">6</string>
+    <string name="user_downvote_value">0</string>
+    <string name="user_upvote_value">0</string>
+    <string name="Username">Username</string>
 </resources>

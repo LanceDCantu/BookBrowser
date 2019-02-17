@@ -16,6 +16,7 @@
 
 package com.example.lance.bookbrowser
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -30,7 +31,8 @@ import android.widget.RadioButton
  * Demonstrates the use of [RecyclerView] with a [LinearLayoutManager] and a
  * [GridLayoutManager].
  */
-class RecyclerViewFragment : Fragment() {
+@SuppressLint("ValidFragment")
+class RecyclerViewFragment (private val dataInView : Array<Book>) : Fragment() {
 
     private var mCurrentLayoutManagerType: LayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER
 
@@ -140,7 +142,7 @@ class RecyclerViewFragment : Fragment() {
      * Generates Strings for RecyclerView's adapter. This data would usually come
      * from a local content provider or remote server.
      */
-    private fun initDataset() {
+    public fun initDataset() {
 
         mDatasetTitle = arrayOfNulls(DATASET_COUNT)
         mDatasetAuthor = arrayOfNulls(DATASET_COUNT)
@@ -152,6 +154,16 @@ class RecyclerViewFragment : Fragment() {
             mDatasetAuthor[i] = "This is element #$i (author)"
             mDatasetPrice[i] = "This is element #$i (price)"
             mDatasetReviews[i] = "This is element #$i (reviews)"
+        }
+
+        if(dataInView != null)
+        {
+            for (i in 0 until 60) {
+                mDatasetTitle[i] = dataInView[i].title
+                mDatasetAuthor[i] = dataInView[i].author
+                mDatasetPrice[i] = "$" + dataInView[i].cost.toString()
+                mDatasetReviews[i] = dataInView[i].reviews.toString() + " Reviews"
+            }
         }
     }
 
