@@ -16,6 +16,7 @@
         android:layout_marginRight="14dp"
         tools:context=".BookInfo">
 
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="36dp"
@@ -92,7 +93,22 @@
                     android:layout_marginLeft="10dp"
                     android:textSize="12sp"
                     android:textStyle="bold"/>
+
+
         </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offered by: SquirrelHunter17"
+                android:textSize="16sp"/>
+        <Button
+                android:id="@+id/contact"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Contact Seller"
+                android:textAllCaps="false"/>
 
         <Spinner
                 android:id="@+id/stores_spinner"
@@ -103,12 +119,14 @@
                 android:layout_height="50dp"
         />
 
+
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorGray"
                 android:layout_marginBottom="5dp"
-        />
+        />-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -395,11 +413,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/sample_review_2">
+                android:id="@+id/sample_review_3">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sample_review_2_title"
+                    android:id="@+id/sample_review_3_title"
                     android:text="The book was really not great"
                     android:textSize="18sp"/>
 
@@ -446,7 +464,287 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sample_review_2_preview"
+                    android:id="@+id/sample_review_3_preview"
+                    android:text="We can always just use two lines. This app might look REALLY weird on tablet though."
+                    android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+        />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/sample_review_4">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_4_title"
+                    android:text="The book was really not great"
+                    android:textSize="18sp"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"
+                />
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_half_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/avg_rating"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_4_preview"
+                    android:text="We can always just use two lines. This app might look REALLY weird on tablet though."
+                    android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+        />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/sample_review_5">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_5_title"
+                    android:text="The book was really not great"
+                    android:textSize="18sp"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"
+                />
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_half_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/avg_rating"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_5_preview"
+                    android:text="We can always just use two lines. This app might look REALLY weird on tablet though."
+                    android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+        />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/sample_review_6">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_6_title"
+                    android:text="The book was really not great"
+                    android:textSize="18sp"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"
+                />
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_half_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/avg_rating"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_6_preview"
+                    android:text="We can always just use two lines. This app might look REALLY weird on tablet though."
+                    android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+        />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/sample_review_7">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_7_title"
+                    android:text="The book was really not great"
+                    android:textSize="18sp"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"
+                />
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_star_half_24"
+                        tools:src="@drawable/baseline_star_24"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/avg_rating"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sample_review_7_preview"
                     android:text="We can always just use two lines. This app might look REALLY weird on tablet though."
                     android:textSize="12sp"/>
 

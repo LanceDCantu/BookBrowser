@@ -16,164 +16,88 @@
 
 package com.example.lance.bookbrowser
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
+import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.RadioButton
+import android.widget.Toast
+import com.algolia.instantsearch.core.helpers.Searcher
+import com.algolia.instantsearch.ui.helpers.InstantSearch
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.recycler_view_fragment.*
+import com.algolia.instantsearch.ui.utils.ItemClickSupport
+import com.algolia.instantsearch.ui.utils.ItemClickSupport.*
 
-/**
- * Demonstrates the use of [RecyclerView] with a [LinearLayoutManager] and a
- * [GridLayoutManager].
- */
-@SuppressLint("ValidFragment")
-class RecyclerViewFragment (private val dataInView : Array<Book>) : Fragment() {
 
-    private var mCurrentLayoutManagerType: LayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER
+class SearchActivity : AppCompatActivity() {
 
-    protected lateinit var mRecyclerView: RecyclerView
-    protected lateinit var mAdapter: CustomAdapter
-    protected lateinit var mLayoutManager: RecyclerView.LayoutManager
+    val secondary = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
 
-    protected lateinit var mDatasetTitle: Array<String?>
-    protected lateinit var mDatasetAuthor: Array<String?>
-    protected lateinit var mDatasetPrice: Array<String?>
-    protected lateinit var mDatasetReviews: Array<String?>
+    lateinit var searcher: Searcher
+    lateinit var helper: InstantSearch
 
-    private enum class LayoutManagerType {
-        GRID_LAYOUT_MANAGER,
-        LINEAR_LAYOUT_MANAGER
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_stores -> {
+                val intent = Intent(this, StoreLocater::class.java)
+                startActivity(intent)
+                //message.setText(R.string.title_home)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_user_market -> {
+                //message.setText(R.string.title_dashboard)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_browse -> {
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+
+                //val intent = Intent(this, StoreLocater::class.java)
+                //startActivity(intent)
+                //message.setText(R.string.title_notifications)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_cart -> {
+                val intent = Intent(this, Cart::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_account -> {
+                val intent = Intent(this, MyAccount::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.recycler_view_fragment)
 
-        // Initialize dataset, this data would usually come from a local content provider or
-        // remote server.
-        initDataset()
-    }
+        navigation_search.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.recycler_view_fragment, container, false)
-        rootView.setTag(TAG)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_search)
+        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        // BEGIN_INCLUDE(initializeRecyclerView)
-        mRecyclerView = rootView.findViewById(R.id.recyclerView)
+        hits.isClickable = true
 
-        // LinearLayoutManager is used here, this will layout the elements in a similar fashion
-        // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
-        // elements are laid out.
-        mLayoutManager = LinearLayoutManager(activity)
-
-        mCurrentLayoutManagerType =
-                LayoutManagerType.LINEAR_LAYOUT_MANAGER
-
-        if (savedInstanceState != null) {
-            // Restore saved layout manager type.
-            mCurrentLayoutManagerType = savedInstanceState
-                .getSerializable(KEY_LAYOUT_MANAGER) as LayoutManagerType
-        }
-        setRecyclerViewLayoutManager(mCurrentLayoutManagerType)
-
-
-        mAdapter = CustomAdapter(mDatasetTitle ,mDatasetAuthor, mDatasetPrice, mDatasetReviews)
-
-        // Set CustomAdapter as the adapter for RecyclerView.
-        mRecyclerView.adapter = mAdapter
-        // END_INCLUDE(initializeRecyclerView)
-
-        return rootView
-    }
-
-    /**
-     * Set RecyclerView's LayoutManager to the one given.
-     *
-     * @param layoutManagerType Type of layout manager to switch to.
-     */
-    private fun setRecyclerViewLayoutManager(layoutManagerType: LayoutManagerType) {
-        var scrollPosition = 0
-
-        // If a layout manager has already been set, get current scroll position.
-        if (mRecyclerView.layoutManager != null) {
-            scrollPosition = (mRecyclerView.layoutManager as LinearLayoutManager)
-                .findFirstCompletelyVisibleItemPosition()
-        }
-
-        when (layoutManagerType) {
-            LayoutManagerType.GRID_LAYOUT_MANAGER -> {
-                mLayoutManager = GridLayoutManager(activity,
-                    SPAN_COUNT
-                )
-                mCurrentLayoutManagerType =
-                        LayoutManagerType.GRID_LAYOUT_MANAGER
+        ItemClickSupport.addTo(hits).setOnItemClickListener(object : ItemClickSupport.OnItemClickListener {
+            override fun onItemClick(recyclerView: RecyclerView, position: Int, v: View) {
+                Toast.makeText(this@SearchActivity, "we did it!", Toast.LENGTH_SHORT).show()
             }
-            LayoutManagerType.LINEAR_LAYOUT_MANAGER -> {
-                mLayoutManager = LinearLayoutManager(activity)
-                mCurrentLayoutManagerType =
-                        LayoutManagerType.LINEAR_LAYOUT_MANAGER
-            }
+        })
 
-            else -> {
-                mLayoutManager = LinearLayoutManager(activity)
-                mCurrentLayoutManagerType =
-                        LayoutManagerType.LINEAR_LAYOUT_MANAGER
-            }
-        }
-
-        mRecyclerView.layoutManager = mLayoutManager
-        mRecyclerView.scrollToPosition(scrollPosition)
+        searcher = Searcher.create("BFI0J5Z2YU","4d6cd0c8a3cb8de4ecf73dd0389a53e0", "products")
+        helper = InstantSearch(this, searcher)
+        helper.search()
     }
 
-    override fun onSaveInstanceState(savedInstanceState: Bundle) {
-        // Save currently selected layout manager.
-        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType)
-        super.onSaveInstanceState(savedInstanceState)
-    }
-
-    /**
-     * Generates Strings for RecyclerView's adapter. This data would usually come
-     * from a local content provider or remote server.
-     */
-    public fun initDataset() {
-
-        mDatasetTitle = arrayOfNulls(DATASET_COUNT)
-        mDatasetAuthor = arrayOfNulls(DATASET_COUNT)
-        mDatasetPrice = arrayOfNulls(DATASET_COUNT)
-        mDatasetReviews = arrayOfNulls(DATASET_COUNT)
-
-        for (i in 0 until 60) {
-            mDatasetTitle[i] = "This is element #$i (title)"
-            mDatasetAuthor[i] = "This is element #$i (author)"
-            mDatasetPrice[i] = "This is element #$i (price)"
-            mDatasetReviews[i] = "This is element #$i (reviews)"
-        }
-
-        if(dataInView != null)
-        {
-            for (i in 0 until 60) {
-                mDatasetTitle[i] = dataInView[i].title
-                mDatasetAuthor[i] = dataInView[i].author
-                mDatasetPrice[i] = "$" + dataInView[i].cost.toString()
-                mDatasetReviews[i] = dataInView[i].reviews.toString() + " Reviews"
-            }
-        }
-    }
-
-    companion object {
-
-        private val TAG = "RecyclerViewFragment"
-        private val KEY_LAYOUT_MANAGER = "layoutManager"
-        private val SPAN_COUNT = 2
-        private val DATASET_COUNT = 60
+    override fun onDestroy() {
+        searcher.destroy()
+        super.onDestroy()
     }
 }
-
 
