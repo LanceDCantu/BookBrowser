@@ -22,13 +22,14 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import com.algolia.instantsearch.core.helpers.Searcher
 import com.algolia.instantsearch.ui.helpers.InstantSearch
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.recycler_view_fragment.*
+import kotlinx.android.synthetic.main.activity_main_search.*
 import com.algolia.instantsearch.ui.utils.ItemClickSupport
-import com.algolia.instantsearch.ui.utils.ItemClickSupport.*
+import com.example.lance.bookbrowser.Cart.Cart
 
 
 class SearchActivity : AppCompatActivity() {
@@ -47,7 +48,9 @@ class SearchActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_market -> {
-                //message.setText(R.string.title_dashboard)
+                val intent = Intent(this, MarketDirectory::class.java)
+                startActivity(intent)
+                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_browse -> {
@@ -75,7 +78,7 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.recycler_view_fragment)
+        setContentView(R.layout.activity_main_search)
 
         navigation_search.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -89,6 +92,14 @@ class SearchActivity : AppCompatActivity() {
                 Toast.makeText(this@SearchActivity, "we did it!", Toast.LENGTH_SHORT).show()
             }
         })
+
+        val quick_launch = findViewById<Button>(R.id.quick_launch_book_button)
+
+        // set on-click listener
+        quick_launch.setOnClickListener {
+            val intent = Intent(this, BookInfoStore::class.java)
+            startActivity(intent)
+        }
 
         searcher = Searcher.create("BFI0J5Z2YU","4d6cd0c8a3cb8de4ecf73dd0389a53e0", "products")
         helper = InstantSearch(this, searcher)

@@ -21,14 +21,24 @@
             android:clickable="true"
             algolia:submitButtonEnabled="false" />
 
+    <Button
+            android:id="@+id/quick_launch_book_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/searchBox"
+            app:layout_constraintBottom_toTopOf="@id/navigation"
+            android:layout_gravity="center_horizontal"
+            android:textSize="16sp"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
     <com.algolia.instantsearch.ui.views.Hits
             android:id="@+id/hits"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/searchBox"
+            app:layout_constraintTop_toBottomOf="@id/quick_launch_book_button"
             app:layout_constraintBottom_toTopOf="@id/navigation"
             android:clickable="true"
-            algolia:itemLayout="@layout/product_item">
+            algolia:itemLayout="@layout/product_item" android:focusable="true">
     </com.algolia.instantsearch.ui.views.Hits>
 
     <android.support.design.widget.BottomNavigationView

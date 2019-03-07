@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import com.example.lance.bookbrowser.Cart.Cart
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
-
-import kotlinx.android.synthetic.main.activity_main_bn.*
+import kotlinx.android.synthetic.main.my_account.*
 
 class MyAccount : AppCompatActivity() {
 
@@ -57,7 +57,7 @@ class MyAccount : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.my_account_fragment)
+        setContentView(R.layout.my_account)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -76,9 +76,9 @@ class MyAccount : AppCompatActivity() {
                 //write method to extract data in a User object
                 user.email = dataSnapshot.child("/user_info/email/").value.toString()
                 user.picture = dataSnapshot.child("/user_info/picture/").value.toString()
-                user.successful_sales = dataSnapshot.child("/user_info/successful sales/").value as Long
-                user.thumbs_up = dataSnapshot.child("/user_info/thumbs up/").value as Long
-                user.thumbs_down = dataSnapshot.child("/user_info/thumbs down/").value as Long
+                user.successful_sales = dataSnapshot.child("/user_info/successful_sales/").value as Long
+                user.thumbs_up = dataSnapshot.child("/user_info/thumbs_up/").value as Long
+                user.thumbs_down = dataSnapshot.child("/user_info/thumbs_down/").value as Long
 
                 val username_textView: TextView = findViewById(R.id.username_text_input)
                 username_textView.text = dataSnapshot.key

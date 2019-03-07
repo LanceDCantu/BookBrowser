@@ -1,21 +1,22 @@
-package com.example.lance.bookbrowser
+package com.example.lance.bookbrowser.Cart
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.lance.bookbrowser.R
 
 
 //Provide views to RecyclerView with data from our data sets created in the ProductFragment class.
 
-class CustomAdapter
+class CustomCartAdapter
 
 //Initialize the dataset of the Adapter.
 
 (private val mDataSetTitle: Array<String?>, private val mDataSetAuthor: Array<String?>,
  private val mDataSetPrice: Array<String?>, private val mDataSetStore: Array<String?>) :
-RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
 
     //Provide a reference to the type of views that you are using (custom ViewHolder)
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {

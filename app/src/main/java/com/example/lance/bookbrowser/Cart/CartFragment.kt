@@ -1,20 +1,19 @@
-package com.example.lance.bookbrowser
+package com.example.lance.bookbrowser.Cart
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
+import com.example.lance.bookbrowser.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class CartRecyclerViewFragment : Fragment() {
+class CartFragment : Fragment() {
 
     val secondary = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
 
@@ -31,7 +30,7 @@ class CartRecyclerViewFragment : Fragment() {
     var mDatasetStore: Array<String?> = arrayOfNulls(0)
 
     lateinit var mRecyclerView: RecyclerView
-    lateinit var mAdapter: CustomAdapter
+    lateinit var mAdapter: CustomCartAdapter
     lateinit var mLayoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +54,12 @@ class CartRecyclerViewFragment : Fragment() {
         mLayoutManager = LinearLayoutManager(activity)
         mRecyclerView.layoutManager = mLayoutManager
 
-        mAdapter = CustomAdapter(mDatasetTitle, mDatasetAuthor, mDatasetPrice, mDatasetStore)
+        mAdapter = CustomCartAdapter(
+            mDatasetTitle,
+            mDatasetAuthor,
+            mDatasetPrice,
+            mDatasetStore
+        )
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         // END_INCLUDE(initializeRecyclerView)
@@ -75,7 +79,7 @@ class CartRecyclerViewFragment : Fragment() {
         {
             override fun onDataChange(dataSnapshot: DataSnapshot)
             {
-                var size : Int = dataSnapshot.childrenCount.toInt()
+                val size : Int = dataSnapshot.childrenCount.toInt()
 
                 mDatasetTitle = arrayOfNulls(size)
                 mDatasetAuthor = arrayOfNulls(size)
@@ -95,7 +99,12 @@ class CartRecyclerViewFragment : Fragment() {
                 }
 
                 mAdapter.notifyDataSetChanged()
-                mAdapter = CustomAdapter(mDatasetTitle, mDatasetAuthor, mDatasetPrice, mDatasetStore)
+                mAdapter = CustomCartAdapter(
+                    mDatasetTitle,
+                    mDatasetAuthor,
+                    mDatasetPrice,
+                    mDatasetStore
+                )
                 mRecyclerView.adapter = mAdapter
             }
             override fun onCancelled(databaseError: DatabaseError)

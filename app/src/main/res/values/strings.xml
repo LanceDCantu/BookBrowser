@@ -72,4 +72,6 @@
     <string name="user_upvote_value">0</string>
     <string name="Username">Username</string>
     <string name="reserve_books">Reserve Books</string>
+    <string name="title_activity_my_offers">MyOffers</string>
+    <string name="title_activity_my_interests">My Interests</string>
 </resources>

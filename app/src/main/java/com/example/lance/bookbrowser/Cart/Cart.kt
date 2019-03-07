@@ -1,18 +1,16 @@
-package com.example.lance.bookbrowser
+package com.example.lance.bookbrowser.Cart
 
 import android.annotation.SuppressLint
 import android.icu.util.Calendar
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.Toast
+import com.example.lance.bookbrowser.Book
+import com.example.lance.bookbrowser.Order
+import com.example.lance.bookbrowser.R
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
-
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 class Cart :  AppCompatActivity() {
@@ -26,7 +24,7 @@ class Cart :  AppCompatActivity() {
 
         if (savedInstanceState == null) {
             val transaction = supportFragmentManager.beginTransaction()
-            val fragment = CartRecyclerViewFragment()
+            val fragment = CartFragment()
             transaction.replace(R.id.sample_content_fragment, fragment)
             transaction.commit()
         }
@@ -43,8 +41,9 @@ class Cart :  AppCompatActivity() {
                 @SuppressLint("NewApi", "SimpleDateFormat")
                 override fun onDataChange(dataSnapshot: DataSnapshot)
                 {
-                    var sending_order = Order("none", "none", 0.0, "none", "lancedcantu", mutableListOf())
-                    var temp_book = Book(1, "none", "none",0.0, "none")
+                    var sending_order =
+                        Order("none", "none", 0.0, "none", "lancedcantu", mutableListOf())
+                    var temp_book = Book(1, "none", "none", 0.0, "none")
 
                     val date = Calendar.getInstance().time
                     val dateFormatter = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")

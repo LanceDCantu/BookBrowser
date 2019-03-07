@@ -14,9 +14,9 @@
         android:layout_marginTop="18dp"
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
-        tools:context=".BookInfo">
+        tools:context=".BookInfoMarket">
 
-        <!--
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="36dp"
@@ -97,19 +97,6 @@
 
         </LinearLayout>
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Offered by: SquirrelHunter17"
-                android:textSize="16sp"/>
-        <Button
-                android:id="@+id/contact"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:text="Contact Seller"
-                android:textAllCaps="false"/>
-
         <Spinner
                 android:id="@+id/stores_spinner"
                 android:layout_width="match_parent"
@@ -119,14 +106,21 @@
                 android:layout_height="50dp"
         />
 
-
+        <Button
+                android:id="@+id/contact"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Add to Cart"
+                android:textAllCaps="false"/>
 
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorGray"
                 android:layout_marginBottom="5dp"
-        />-->
+        />
+
 
         <TextView
             android:layout_width="wrap_content"

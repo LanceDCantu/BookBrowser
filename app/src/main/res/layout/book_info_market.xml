@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:id="@+id/book_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        tools:context=".BookInfoMarket">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_title"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/author_name"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"/>
+    </LinearLayout>
+
+        <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/book_title"
+                android:gravity="center_vertical"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="45dp"
+                app:srcCompat="@drawable/baseline_book_24"
+                tools:src="@drawable/baseline_book_24" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price"
+                android:textSize="28sp"
+                android:textStyle="bold"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+            <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_star_24"
+                    tools:src="@drawable/baseline_star_24"
+            />
+            <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_star_24"
+                    tools:src="@drawable/baseline_star_24"/>
+            <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_star_24"
+                    tools:src="@drawable/baseline_star_24"/>
+            <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_star_24"
+                    tools:src="@drawable/baseline_star_24"/>
+            <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_star_half_24"
+                    tools:src="@drawable/baseline_star_24"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/avg_rating"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offered by: SquirrelHunter17"
+                android:textSize="16sp"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+            <Button
+                    android:id="@+id/contact_button"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="25dp"
+                    android:text="Contact Seller"
+                    android:textAllCaps="false"/>
+
+            <Button
+                    android:id="@+id/add_to_interests_button"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="Add to My Interests"
+                    android:textAllCaps="false"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
