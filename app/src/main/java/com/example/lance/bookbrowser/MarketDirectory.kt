@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import com.example.lance.bookbrowser.Cart.Cart
+import com.example.lance.bookbrowser.MarketSearch.MarketSearchActivity
 import com.example.lance.bookbrowser.MyInterests.MyInterests
 import com.example.lance.bookbrowser.MyOffers.MyOffers
 import kotlinx.android.synthetic.main.market_directory.*
@@ -66,7 +67,7 @@ class MarketDirectory : AppCompatActivity() {
 
         // set on-click listener
         explore_button.setOnClickListener {
-            val intent = Intent(this, MarketSearch::class.java)
+            val intent = Intent(this, MarketSearchActivity::class.java)
             startActivity(intent)
         }
 

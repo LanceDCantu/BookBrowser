@@ -81,7 +81,7 @@ class Cart :  AppCompatActivity() {
                 }
             }
             //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
-            users_ref.child("users/" + "lancedcantu/" + "cart/").addListenerForSingleValueEvent(menuListener)
+            users_ref.child("lancedcantu@yahoo!com/" + "cart/").addListenerForSingleValueEvent(menuListener)
         }
     }
 }

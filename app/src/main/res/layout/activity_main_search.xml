@@ -9,15 +9,14 @@
         android:launchMode="singleTop"
         android:orientation="vertical"
         android:clickable="true"
-        tools:context=".SearchActivity">
+        tools:context=".MainSearchActivity">
 
     <com.algolia.instantsearch.ui.views.SearchBox
             android:id="@+id/searchBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
-            android:queryHint="Search"
-            algolia:autofocus="false"
+            android:queryHint="Search for title or authors..."
             android:clickable="true"
             algolia:submitButtonEnabled="false" />
 
@@ -38,7 +37,9 @@
             app:layout_constraintTop_toBottomOf="@id/quick_launch_book_button"
             app:layout_constraintBottom_toTopOf="@id/navigation"
             android:clickable="true"
-            algolia:itemLayout="@layout/product_item" android:focusable="true">
+            algolia:itemLayout="@layout/product_item"
+            algolia:autoHideKeyboard="true"
+            android:focusable="true">
     </com.algolia.instantsearch.ui.views.Hits>
 
     <android.support.design.widget.BottomNavigationView

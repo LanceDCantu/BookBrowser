@@ -48,7 +48,7 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".SearchActivity"
+                android:name=".MainSearchActivity"
                 android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
 
@@ -74,7 +74,17 @@
                 android:name=".MyOffers.MyOffers"
                 android:label="@string/title_activity_my_offers">
         </activity>
-        <activity android:name=".MarketSearch">
+        <activity android:name=".MarketSearch.MarketSearchActivity"
+                  android:noHistory="true"
+                  android:theme="@style/AppTheme.NoAnimation">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.app.searchable"
+                    android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".MarketDirectory">
         </activity>

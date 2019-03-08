@@ -105,7 +105,7 @@ class MyOffersFragment : Fragment() {
         }
         //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
         //we only want to a do a query if the user updates not the market
-        users_ref.child("users/" + "lancedcantu/" + "my_offers/").addValueEventListener(menuListener)
+        users_ref.child("lancedcantu@yahoo!com/" + "my_offers/").addValueEventListener(menuListener)
     }
 
     private fun readMarketData()

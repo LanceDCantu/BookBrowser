@@ -113,7 +113,7 @@ class CartFragment : Fragment() {
             }
         }
         //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
-        secondary.child("users/" + "lancedcantu/" + "cart/").addValueEventListener(menuListener)
+        secondary.child("lancedcantu@yahoo!com/" + "cart/").addValueEventListener(menuListener)
     }
 
     companion object {
