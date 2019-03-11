@@ -9,6 +9,7 @@ import com.example.lance.bookbrowser.Cart.Cart
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_store_locater.*
@@ -22,17 +23,16 @@ class StoreLocater : AppCompatActivity(), OnMapReadyCallback {
             R.id.navigation_stores -> {
                 val intent = Intent(this, StoreLocater::class.java)
                 startActivity(intent)
-                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_market -> {
-                //message.setText(R.string.title_dashboard)
+                val intent = Intent(this, MarketDirectory::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_browse -> {
-                //val intent = Intent(this, StoreLocater::class.java)
-                //startActivity(intent)
-                //message.setText(R.string.title_notifications)
+                val intent = Intent(this, MainSearchActivity::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_cart -> {
@@ -53,10 +53,16 @@ class StoreLocater : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_locater)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation_stores.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_stores)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        bottomNavigation.getMenu().findItem(R.id.navigation_stores).setChecked(true)
+
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

@@ -41,7 +41,7 @@
     </string>
     <string name="subtotal">"Subtotal"</string>
     <string name="title_activity_cartview">cartview</string>
-    <string name="title_activity_cart">Cart</string>
+    <string name="title_activity_cart">My Cart</string>
     <string name="title_activity_login">login</string>
     <string name="search_title">Search</string>
     <string name="search_suggestion">author or title</string>
@@ -74,4 +74,11 @@
     <string name="reserve_books">Reserve Books</string>
     <string name="title_activity_my_offers">MyOffers</string>
     <string name="title_activity_my_interests">My Interests</string>
+    <string name="title_activity_test">Map</string>
+    <string name="add_offer">Add Offer</string>
+    <string name="market">My Market</string>
+    <string name="explore">Explore</string>
+    <string name="find_stores">Find Stores</string>
+    <string name="my_account">My Account</string>
+    <string name="about_us">About Us</string>
 </resources>

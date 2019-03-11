@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main_search.*
 import com.algolia.instantsearch.ui.utils.ItemClickSupport
 import com.example.lance.bookbrowser.Cart.Cart
+import kotlinx.android.synthetic.main.activity_cart.*
 
 
 class MainSearchActivity : AppCompatActivity() {
@@ -42,22 +43,16 @@ class MainSearchActivity : AppCompatActivity() {
             R.id.navigation_stores -> {
                 val intent = Intent(this, StoreLocater::class.java)
                 startActivity(intent)
-                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_market -> {
                 val intent = Intent(this, MarketDirectory::class.java)
                 startActivity(intent)
-                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_browse -> {
                 val intent = Intent(this, MainSearchActivity::class.java)
                 startActivity(intent)
-
-                //val intent = Intent(this, StoreLocater::class.java)
-                //startActivity(intent)
-                //message.setText(R.string.title_notifications)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_cart -> {
@@ -82,6 +77,8 @@ class MainSearchActivity : AppCompatActivity() {
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_search)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        bottomNavigation.getMenu().findItem(R.id.navigation_browse).setChecked(true)
 
         //hits.isClickable = true
 

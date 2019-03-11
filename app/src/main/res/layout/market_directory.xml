@@ -64,7 +64,7 @@
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigation"
+            android:id="@+id/navigation_market_directory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

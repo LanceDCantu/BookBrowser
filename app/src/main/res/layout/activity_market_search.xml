@@ -9,7 +9,7 @@
         android:launchMode="singleTop"
         android:orientation="vertical"
         android:clickable="true"
-        tools:context=".MarketSearch.MarketSearchActivity">
+        tools:context=".MarketSearchActivity">
 
     <com.algolia.instantsearch.ui.views.SearchBox
             android:id="@+id/marketSearchBox"

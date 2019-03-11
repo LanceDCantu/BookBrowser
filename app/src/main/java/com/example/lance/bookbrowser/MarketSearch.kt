@@ -1,4 +1,4 @@
-package com.example.lance.bookbrowser.MarketSearch
+package com.example.lance.bookbrowser
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.algolia.instantsearch.core.helpers.Searcher
 import com.algolia.instantsearch.ui.helpers.InstantSearch
-import kotlinx.android.synthetic.main.activity_main_search.*
 import com.algolia.instantsearch.ui.utils.ItemClickSupport
-import com.example.lance.bookbrowser.*
 import com.example.lance.bookbrowser.Cart.Cart
 import kotlinx.android.synthetic.main.activity_market_search.*
 
@@ -27,22 +25,16 @@ class MarketSearchActivity : AppCompatActivity() {
             R.id.navigation_stores -> {
                 val intent = Intent(this, StoreLocater::class.java)
                 startActivity(intent)
-                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_market -> {
                 val intent = Intent(this, MarketDirectory::class.java)
                 startActivity(intent)
-                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_browse -> {
                 val intent = Intent(this, MainSearchActivity::class.java)
                 startActivity(intent)
-
-                //val intent = Intent(this, StoreLocater::class.java)
-                //startActivity(intent)
-                //message.setText(R.string.title_notifications)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_cart -> {
@@ -67,6 +59,8 @@ class MarketSearchActivity : AppCompatActivity() {
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_market_search)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        bottomNavigation.getMenu().findItem(R.id.navigation_user_market).setChecked(true)
 
         market_hits.isClickable = true
 

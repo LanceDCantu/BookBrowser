@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.lance.bookbrowser.MyInterests.MyInterestsFragment
 import com.example.lance.bookbrowser.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -53,6 +54,7 @@ class CartFragment : Fragment() {
         // elements are laid out.
         mLayoutManager = LinearLayoutManager(activity)
         mRecyclerView.layoutManager = mLayoutManager
+        mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER
 
         mAdapter = CustomCartAdapter(
             mDatasetTitle,

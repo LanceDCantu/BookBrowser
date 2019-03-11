@@ -25,20 +25,16 @@ class MyAccount : AppCompatActivity() {
             R.id.navigation_stores -> {
                 val intent = Intent(this, StoreLocater::class.java)
                 startActivity(intent)
-                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_market -> {
-                //message.setText(R.string.title_dashboard)
+                val intent = Intent(this, MarketDirectory::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_browse -> {
-                //val recyclerViewFragment = RecyclerViewFragment(Array(60) { Book(1, "none", "none", 0.0, "none") })
-                //openFragment(recyclerViewFragment)
-
-                //val intent = Intent(this, StoreLocater::class.java)
-                //startActivity(intent)
-                //message.setText(R.string.title_notifications)
+                val intent = Intent(this, MainSearchActivity::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_cart -> {
@@ -59,10 +55,12 @@ class MyAccount : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_account)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation_account.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_account)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        bottomNavigation.getMenu().findItem(R.id.navigation_account).setChecked(true)
 
         initUserData()
     }

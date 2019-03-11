@@ -6,7 +6,6 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import com.example.lance.bookbrowser.Cart.Cart
-import com.example.lance.bookbrowser.MarketSearch.MarketSearchActivity
 import com.example.lance.bookbrowser.MyInterests.MyInterests
 import com.example.lance.bookbrowser.MyOffers.MyOffers
 import kotlinx.android.synthetic.main.market_directory.*
@@ -18,20 +17,16 @@ class MarketDirectory : AppCompatActivity() {
             R.id.navigation_stores -> {
                 val intent = Intent(this, StoreLocater::class.java)
                 startActivity(intent)
-                //message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_market -> {
-                //message.setText(R.string.title_dashboard)
+                val intent = Intent(this, MarketDirectory::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_browse -> {
-                //val recyclerViewFragment = RecyclerViewFragment(Array(60) { Book(1, "none", "none", 0.0, "none") })
-                //openFragment(recyclerViewFragment)
-
-                //val intent = Intent(this, StoreLocater::class.java)
-                //startActivity(intent)
-                //message.setText(R.string.title_notifications)
+                val intent = Intent(this, MainSearchActivity::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_cart -> {
@@ -52,10 +47,12 @@ class MarketDirectory : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.market_directory)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation_market_directory.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_market_directory)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        bottomNavigation.getMenu().findItem(R.id.navigation_user_market).setChecked(true)
 
         initButtons()
     }
