@@ -82,7 +82,7 @@ class MyAccount : AppCompatActivity() {
                 username_textView.text = user.username
 
                 val email_TextView: TextView = findViewById(R.id.email_text_input)
-                email_TextView.text = dataSnapshot.key
+                email_TextView.text = dataSnapshot.key!!.replace('!','.',true)
 
                 val successful_sales_TextView: TextView = findViewById(R.id.successful_sales_text)
                 successful_sales_TextView.text = user.successful_sales.toString()

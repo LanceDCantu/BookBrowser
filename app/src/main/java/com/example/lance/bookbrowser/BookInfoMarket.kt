@@ -7,17 +7,17 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import com.example.lance.bookbrowser.Cart.Cart
+import com.google.firebase.functions.FirebaseFunctions
 import kotlinx.android.synthetic.main.activity_store_locater.*
 import kotlinx.android.synthetic.main.book_info_market.*
 
-class BookInfoMarket : AppCompatActivity(), View.OnClickListener {
-    override fun onClick(v: View?) {
-        when(v?.id){
+class BookInfoMarket : AppCompatActivity() {
 
+    private lateinit var isbn : String
 
-        }
-    }
+    private lateinit var functions: FirebaseFunctions
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -53,6 +53,26 @@ class BookInfoMarket : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.book_info_market)
+
+        val intent = intent
+        isbn = intent.getStringExtra("book_isbn")
+
+        val data = hashMapOf(
+            "isbn" to isbn,
+            "push" to true
+        )
+
+        functions = FirebaseFunctions.getInstance()
+
+        functions
+            .getHttpsCallable("bookInfo")
+            .call(data)
+            .addOnFailureListener {
+                Toast.makeText(this, "we didn't do it!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnSuccessListener {
+                Toast.makeText(this, "we did it!", Toast.LENGTH_SHORT).show()
+            }
 
         navigation_book_market.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 

@@ -75,6 +75,7 @@ class MarketSearchActivity : AppCompatActivity() {
         // set on-click listener
         quick_launch.setOnClickListener {
             val intent = Intent(this, BookInfoMarket::class.java)
+            intent.putExtra("book_isbn", "9789402306538")
             startActivity(intent)
         }
 

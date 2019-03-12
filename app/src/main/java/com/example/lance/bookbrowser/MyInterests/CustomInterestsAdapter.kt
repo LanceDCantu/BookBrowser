@@ -12,7 +12,7 @@ import com.example.lance.bookbrowser.R
 
 class CustomInterestsAdapter
 
-//Initialize the dataset of the Adapter.
+//Initialize the data set of the Adapter.
 
     (private val mDataSetTitle: Array<String?>, private val mDataSetAuthor: Array<String?>,
      private val mDataSetPrice: Array<String?>, private val mDataSetSeller: Array<String?>) :
@@ -30,6 +30,8 @@ class CustomInterestsAdapter
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item, viewGroup, false)
+
+        //v.setOnClickListener(mOnClickListener);
 
         return ViewHolder(v)
     }
