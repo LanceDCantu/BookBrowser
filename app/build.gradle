@@ -65,6 +65,9 @@ dependencies {
     // FirebaseUI for Cloud Storage
     implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
 
+    //Firebase FCM SDK
+    implementation 'com.google.firebase:firebase-messaging:17.4.0'
+
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
     kapt "android.arch.lifecycle:compiler:1.0.0"
 }

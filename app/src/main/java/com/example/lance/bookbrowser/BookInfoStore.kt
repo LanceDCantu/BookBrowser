@@ -56,10 +56,11 @@ class BookInfoStore : AppCompatActivity() {
         val intent = intent
         isbn = intent.getStringExtra("book_isbn")
 
-        val data = hashMapOf(
-            "isbn" to isbn,
-            "push" to true
+       val data = hashMapOf(
+            "isbn" to isbn
+           // "push" to true
         )
+
 
         functions = FirebaseFunctions.getInstance()
 
@@ -67,7 +68,7 @@ class BookInfoStore : AppCompatActivity() {
             .getHttpsCallable("bookInfo")
             .call(data)
             .addOnFailureListener {
-                Toast.makeText(this, "we didn't do it!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, it.message,Toast.LENGTH_LONG).show()
             }
             .addOnSuccessListener {
                 Toast.makeText(this, "we did it!", Toast.LENGTH_SHORT).show()

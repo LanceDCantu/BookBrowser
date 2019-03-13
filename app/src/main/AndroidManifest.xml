@@ -115,6 +115,14 @@
                   android:theme="@style/AppTheme.NoAnimation"
                   android:label="@string/add_offer">
         </activity>
+
+        <service android:name="com.example.lance.bookbrowser.MyFirebaseMessagingService">
+            <intent-filter>
+                    <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+
+        </service>
     </application>
+
 
 </manifest>
