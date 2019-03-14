@@ -7,12 +7,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.lance.bookbrowser.MyInterests.MyInterestsFragment
 import com.example.lance.bookbrowser.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.example.lance.bookbrowser.Cart.CustomCartAdapter.ClickListener
 
 class CartFragment : Fragment() {
 
@@ -30,6 +32,8 @@ class CartFragment : Fragment() {
     var mDatasetPrice: Array<String?> = arrayOfNulls(0)
     var mDatasetStore: Array<String?> = arrayOfNulls(0)
 
+    var mCartMonValues : DoubleArray = doubleArrayOf(0.0, 0.0, 0.0, 0.0)
+
     lateinit var mRecyclerView: RecyclerView
     lateinit var mAdapter: CustomCartAdapter
     lateinit var mLayoutManager: RecyclerView.LayoutManager
@@ -38,6 +42,8 @@ class CartFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         initDataset()
+
+
     }
 
     override fun onCreateView(
@@ -62,9 +68,22 @@ class CartFragment : Fragment() {
             mDatasetPrice,
             mDatasetStore
         )
+
+        mAdapter.setOnItemClickListener(object : CustomCartAdapter.ClickListener {
+            override fun onItemClick(position: Int, v: View) {
+                Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         // END_INCLUDE(initializeRecyclerView)
+
+        mAdapter.setOnItemClickListener(object : CustomCartAdapter.ClickListener {
+            override fun onItemClick(position: Int, v: View) {
+                Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         return rootView
     }
@@ -97,8 +116,12 @@ class CartFragment : Fragment() {
                     mDatasetPrice[index] = cart_item_snap.child("/price/").value.toString()
                     mDatasetStore[index] = cart_item_snap.child("/store/").value.toString()
 
+                    mCartMonValues[0] += cart_item_snap.child("/price/").value as Double
+
                     index++
                 }
+
+                mCartMonValues[3] = mCartMonValues.sum()
 
                 mAdapter.notifyDataSetChanged()
                 mAdapter = CustomCartAdapter(
@@ -108,6 +131,17 @@ class CartFragment : Fragment() {
                     mDatasetStore
                 )
                 mRecyclerView.adapter = mAdapter
+
+                if(mCartMonValues != null && activity != null) {
+                    if(mDatasetTitle.size == 0)
+                    {
+                        (activity as OnCartEntryListener).SetMonetaryValuesCart(doubleArrayOf(0.0,0.0,0.0,0.0))
+                    }
+                    else
+                    {
+                        (activity as OnCartEntryListener).SetMonetaryValuesCart(mCartMonValues)
+                    }
+                }
             }
             override fun onCancelled(databaseError: DatabaseError)
             {
@@ -116,6 +150,11 @@ class CartFragment : Fragment() {
         }
         //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
         secondary.child("lancedcantu@yahoo!com/" + "cart/").addValueEventListener(menuListener)
+    }
+
+
+    interface OnCartEntryListener {
+        fun SetMonetaryValuesCart(monetaryValues : DoubleArray)
     }
 
     companion object {

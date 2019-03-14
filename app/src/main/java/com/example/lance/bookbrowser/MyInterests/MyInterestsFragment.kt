@@ -129,10 +129,7 @@ class MyInterestsFragment : Fragment() {
                     mDatasetTitle[index] = dataSnapshot.child("/" + interest_id + "/title/").value.toString()
                     mDatasetPrice[index] = dataSnapshot.child("/" + interest_id + "/asking_price/").value.toString()
                     mDatasetSeller[index] = dataSnapshot.child("/" + interest_id + "/seller/").value.toString()
-
-                    if(dataSnapshot.child("/" + interest_id + "/authors/").hasChildren()) {
-                        mDatasetAuthor[index] = dataSnapshot.child("/" + interest_id + "/authors/").children.elementAt(0).value.toString()
-                    }
+                    mDatasetAuthor[index] = dataSnapshot.child("/" + interest_id + "/authors/").value.toString()
 
                     index++
                 }

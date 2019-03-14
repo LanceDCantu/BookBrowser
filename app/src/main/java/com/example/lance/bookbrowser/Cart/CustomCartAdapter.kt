@@ -19,29 +19,37 @@ class CustomCartAdapter
 RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
 
     //Provide a reference to the type of views that you are using (custom ViewHolder)
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+
+    class ViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+
         var bookTitleTextView: TextView = v.findViewById<View>(R.id.book_title) as TextView
         var bookAuthorTextView: TextView = v.findViewById<View>(R.id.book_author) as TextView
         var bookPriceTextView: TextView = v.findViewById<View>(R.id.book_price) as TextView
         var bookStoreTextView: TextView = v.findViewById<View>(R.id.book_review) as TextView
+
+        init {
+            v.setOnClickListener(this)
+        }
+
+        override fun onClick(view: View) {
+            clickListener!!.onItemClick(getAdapterPosition(), view)
+        }
     }
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item, viewGroup, false)
-
         return ViewHolder(v)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
         viewHolder.bookTitleTextView.text = mDataSetTitle[position]
         viewHolder.bookAuthorTextView.text = mDataSetAuthor[position]
-        viewHolder.bookPriceTextView.text = mDataSetPrice[position]
+        viewHolder.bookPriceTextView.text = "$" + mDataSetPrice[position]
         viewHolder.bookStoreTextView.text = mDataSetStore[position]
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
@@ -51,7 +59,15 @@ RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
         return mDataSetTitle.size
     }
 
+    fun setOnItemClickListener(clickListener: ClickListener) {
+        CustomCartAdapter.clickListener = clickListener
+    }
+
+    interface ClickListener {
+        fun onItemClick(position: Int, v: View)
+    }
+
     companion object {
-        private val TAG = "CustomAdapter"
+        private var clickListener: CustomCartAdapter.ClickListener? = null
     }
 }

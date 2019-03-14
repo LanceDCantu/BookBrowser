@@ -13,6 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+    <Button
+            android:id="@+id/book_button_interests"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/invisible_button"
+            android:clickable="true"
+            android:focusable="true"/>
+
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation_interests"
             android:layout_width="match_parent"

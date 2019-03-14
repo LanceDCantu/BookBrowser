@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.example.lance.bookbrowser.*
 import com.example.lance.bookbrowser.R
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_cart.*
 import java.text.SimpleDateFormat
 
 
-class Cart :  AppCompatActivity() {
+class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
 
     val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     val orders_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-orders.firebaseio.com").reference
@@ -51,6 +52,19 @@ class Cart :  AppCompatActivity() {
         false
     }
 
+    override fun SetMonetaryValuesCart(monetaryValues : DoubleArray) {
+        var subtotalText: TextView = findViewById(R.id.subtotal_text)
+        var feesText: TextView = findViewById(R.id.fees_text)
+        var taxText: TextView = findViewById(R.id.tax_text)
+        var totalText: TextView = findViewById(R.id.total_text)
+
+        //could find a way to increment through this alternatively
+        subtotalText.text = "$" + monetaryValues[0].toString()
+        feesText.text = "$" + monetaryValues[1].toString()
+        taxText.text = "$" + monetaryValues[2].toString()
+        totalText.text = "$" + monetaryValues[3].toString()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
@@ -74,7 +88,6 @@ class Cart :  AppCompatActivity() {
 
         // set on-click listener
         reserve_books.setOnClickListener {
-            Toast.makeText(this, "You clicked me.", Toast.LENGTH_SHORT).show()
 
             val menuListener = object : ValueEventListener
             {
@@ -83,7 +96,7 @@ class Cart :  AppCompatActivity() {
                 {
                     var sending_order =
                         Order("none", "none", 0.0, "none", "lancedcantu", mutableListOf())
-                    var temp_book = Book(1, "none", "none", 0.0, "none")
+                    var temp_book = Book("none", "none", "none", 0.0, "none")
 
                     val date = Calendar.getInstance().time
                     val dateFormatter = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
@@ -97,23 +110,30 @@ class Cart :  AppCompatActivity() {
                     {
                         temp_book.title = cart_item_snap.child("/title/").value.toString()
                         temp_book.author = cart_item_snap.child("/author/").value.toString()
-                        temp_book.cost = cart_item_snap.child("/price/").value as Double
+                        temp_book.price = cart_item_snap.child("/price/").value as Double
                         temp_book.store = cart_item_snap.child("/store/").value.toString()
 
                         sending_order.books.add(temp_book)
 
                         sending_order.store = temp_book.store//Note this assumes all the books are from the same place
-                        sending_order.total += temp_book.cost
+                        sending_order.total += temp_book.price
 
                         index++
                     }
 
-                    var pushRef : DatabaseReference = orders_ref.push()
-                    var pushKey : String = pushRef.key!!
+                    if(sending_order.books.size != 0) {
 
-                    pushRef.setValue(sending_order)
+                        var pushRef: DatabaseReference = orders_ref.push()
+                        var pushKey: String = pushRef.key!!
 
-                    Toast.makeText(this@Cart, "Check it.", Toast.LENGTH_SHORT).show()
+                        var cartPushRef: DatabaseReference = users_ref.child("lancedcantu@yahoo!com/" + "cart/")
+
+                        cartPushRef.setValue(null)
+
+                        pushRef.setValue(sending_order)
+
+                        Toast.makeText(this@Cart, "Books Reserved!", Toast.LENGTH_LONG).show()
+                    }
                 }
                 override fun onCancelled(databaseError: DatabaseError)
                 {
@@ -124,6 +144,8 @@ class Cart :  AppCompatActivity() {
             users_ref.child("lancedcantu@yahoo!com/" + "cart/").addListenerForSingleValueEvent(menuListener)
         }
     }
+
+
 }
 
 

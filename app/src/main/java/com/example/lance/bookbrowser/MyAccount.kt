@@ -18,7 +18,7 @@ class MyAccount : AppCompatActivity() {
     val secondary = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     var storageRef = FirebaseStorage.getInstance().reference.child("profile_pics/" + "blue.jpg")
 
-    var user : User = User (MutableList(1) { Book(1, "none", "none",0.0, "none") }, "none", "none", 0,0,0, "none")
+    var user : User = User (MutableList(1) { Book("none", "none", "none",0.0, "none") }, "none", "none", 0,0,0, "none")
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {

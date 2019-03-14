@@ -1,12 +1,17 @@
 package com.example.lance.bookbrowser.MyInterests
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import com.example.lance.bookbrowser.MyOffers.AddOffer
 import com.example.lance.bookbrowser.R
 import com.google.firebase.database.*
 import com.google.firebase.database.DataSnapshot
@@ -126,12 +131,9 @@ class MyOffersFragment : Fragment() {
                     //if something can't load put can't load
 
                     mDatasetTitle[index] = dataSnapshot.child("/" + offer_id + "/title/").value.toString()
+                    mDatasetAuthor[index] = dataSnapshot.child("/" + offer_id + "/authors/").value.toString()
                     mDatasetPrice[index] = dataSnapshot.child("/" + offer_id + "/asking_price/").value.toString()
                     mDatasetSeller[index] = dataSnapshot.child("/" + offer_id + "/seller/").value.toString()
-
-                    if(dataSnapshot.child("/" + offer_id + "/authors/").hasChildren()) {
-                        mDatasetAuthor[index] = dataSnapshot.child("/" + offer_id + "/authors/").children.elementAt(0).value.toString()
-                    }
 
                     index++
                 }

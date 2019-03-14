@@ -81,4 +81,5 @@
     <string name="find_stores">Find Stores</string>
     <string name="my_account">My Account</string>
     <string name="about_us">About Us</string>
+    <string name="title_activity_create_account">Create Account</string>
 </resources>

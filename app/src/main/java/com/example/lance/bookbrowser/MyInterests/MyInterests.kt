@@ -4,6 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.widget.Button
+import android.widget.Toast
 import com.example.lance.bookbrowser.*
 import com.example.lance.bookbrowser.Cart.Cart
 import kotlinx.android.synthetic.main.activity_my_interests.*
@@ -58,6 +60,18 @@ class MyInterests : AppCompatActivity() {
             val fragment = MyInterestsFragment()
             transaction.replace(R.id.sample_content_fragment, fragment)
             transaction.commit()
+        }
+
+        val interests_button = findViewById<Button>(R.id.book_button_interests)
+
+        // set on-click listener
+        interests_button.setOnClickListener {
+            Toast.makeText(this, "Book Clicked!", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, BookInfoMarket::class.java)
+            intent.putExtra("book_isbn", "9789402306538")
+            intent.putExtra("market_id", "-L_6dO9oK5DLIC4ZVzcW")
+            intent.putExtra("is_owner", false)
+            startActivity(intent)
         }
     }
 }

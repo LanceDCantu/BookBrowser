@@ -94,7 +94,7 @@ class MainSearchActivity : AppCompatActivity() {
         quick_launch.setOnClickListener {
             //send 9789402306538 into the function below
             val intent = Intent(this, BookInfoStore::class.java)
-            intent.putExtra("book_isbn", "9789402306538")
+            intent.putExtra("book_isbn", "9780525643593")
             startActivity(intent)
         }
 

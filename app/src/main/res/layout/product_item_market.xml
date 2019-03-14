@@ -6,33 +6,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:clickable="true"
-    android:focusable="true">
+    android:clickable="true">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/book"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:clickable="true"
-            android:focusable="true">
-
-            <Button
-                android:id="@+id/book_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:background="@drawable/book_item_bg_stroke"
-                android:clickable="true"
-                android:focusable="true"/>
+            android:layout_height="100dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginStart="128dp"
-                android:clickable="true"
                 app:layout_constraintStart_toStartOf="parent">
                 <TextView
                     android:id="@+id/book_title"

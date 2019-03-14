@@ -76,7 +76,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="6dp"
-                    android:text="@string/subtotal_value"
+                    android:id="@+id/subtotal_text"
+                    android:text="0.0"
                     android:textSize="22sp"
                     android:gravity="right" android:layout_gravity="right"/>
 
@@ -84,7 +85,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/fees_value"
+                    android:id="@+id/fees_text"
+                    android:text="0.0"
                     android:textSize="22sp"
                     android:gravity="right" android:layout_gravity="right"/>
 
@@ -92,14 +94,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/tax_value"
+                    android:id="@+id/tax_text"
+                    android:text="0.0"
                     android:textSize="22sp"
                     android:gravity="right" android:layout_gravity="right"/>
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/total_value"
+                    android:id="@+id/total_text"
+                    android:text="0.0"
                     android:textSize="26sp"
                     android:textStyle="bold"
                     android:gravity="right" android:layout_gravity="right"/>
