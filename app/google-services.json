@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "365422859265-s2qt5d7eju9ie46m57lsi9pcbaiibtj5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lance.bookbrowser",
+            "certificate_hash": "8cb0e8d0ecebbd9fe69016d05cf5e3bb90dd134b"
+          }
+        },
+        {
           "client_id": "365422859265-msj5r7k3gcj9idpcc68bguro533vfbik.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
