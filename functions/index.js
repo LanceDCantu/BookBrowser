@@ -19,6 +19,7 @@ exports.bookInfo = functions.https.onCall((data) => {
         if (!error && response.statusCode === 200) {
               console.log('received ' + body);
               var result = parseXML(body);
+              console.log('xml parse' + result);
               return result;
         } else {
               console.log('went wrong!!', error);
