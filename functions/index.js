@@ -7,8 +7,8 @@ admin.initializeApp();
 
 
 
-exports.bookInfo = functions.https.onRequest((req, res) => {
-    const isbn = '0618162216';
+exports.bookInfo = functions.https.onCall((data) => {
+    const isbn = data.isbn;
 
     console.log('bookInfo', isbn);
     const goodreadsUrl = functions.config().goodreads.url;
@@ -19,10 +19,7 @@ exports.bookInfo = functions.https.onRequest((req, res) => {
         if (!error && response.statusCode === 200) {
               console.log('received ' + body);
               var result = parseXML(body);
-              res.statusCode = 200;
-              res.set('Content-Type', 'application/json');
-              //console.log('Result', JSON.stringify(result));
-              res.end(JSON.stringify(result));
+              return result;
         } else {
               console.log('went wrong!!', error);
         }
