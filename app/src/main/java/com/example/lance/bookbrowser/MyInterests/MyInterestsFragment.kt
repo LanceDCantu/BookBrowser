@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.lance.bookbrowser.R
 import com.google.firebase.database.*
 import com.google.firebase.database.DataSnapshot
@@ -69,6 +70,12 @@ class MyInterestsFragment : Fragment() {
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         // END_INCLUDE(initializeRecyclerView)
+
+        mAdapter.setOnItemClickListener(object : CustomInterestsAdapter.ClickListener {
+            override fun onItemClick(position: Int, v: View) {
+                Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         return rootView
     }

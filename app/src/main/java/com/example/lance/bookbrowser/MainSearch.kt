@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.activity_main_search.*
 import com.algolia.instantsearch.ui.utils.ItemClickSupport
 import com.example.lance.bookbrowser.Cart.Cart
 import kotlinx.android.synthetic.main.activity_cart.*
+import kotlinx.android.synthetic.main.product_item.view.*
 
 
 class MainSearchActivity : AppCompatActivity() {
@@ -80,23 +81,18 @@ class MainSearchActivity : AppCompatActivity() {
 
         bottomNavigation.getMenu().findItem(R.id.navigation_browse).setChecked(true)
 
-        //hits.isClickable = true
+        hits.isClickable = true
 
         ItemClickSupport.addTo(hits).setOnItemClickListener(object : ItemClickSupport.OnItemClickListener {
             override fun onItemClick(recyclerView: RecyclerView, position: Int, v: View) {
-                Toast.makeText(this@MainSearchActivity, "we did it!", Toast.LENGTH_SHORT).show()
+                var clicked_view : View = hits.getChildAt(position)
+                var isbn_clicked : String? = clicked_view.book_isbn.text.toString()
+
+                val intent = Intent(this@MainSearchActivity, BookInfoStore::class.java)
+                intent.putExtra("book_isbn", isbn_clicked)
+                startActivity(intent)
             }
         })
-
-        val quick_launch = findViewById<Button>(R.id.quick_launch_book_button)
-
-        // set on-click listener
-        quick_launch.setOnClickListener {
-            //send 9789402306538 into the function below
-            val intent = Intent(this, BookInfoStore::class.java)
-            intent.putExtra("book_isbn", "9780525643593")
-            startActivity(intent)
-        }
 
         searcher = Searcher.create("BFI0J5Z2YU","4d6cd0c8a3cb8de4ecf73dd0389a53e0", "products")
         helper = InstantSearch(this, searcher)

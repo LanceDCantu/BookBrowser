@@ -19,19 +19,25 @@ class CustomInterestsAdapter
     RecyclerView.Adapter<CustomInterestsAdapter.ViewHolder>() {
 
     //Provide a reference to the type of views that you are using (custom ViewHolder)
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class ViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
         var bookTitleTextView: TextView = v.findViewById<View>(R.id.book_title) as TextView
         var bookAuthorTextView: TextView = v.findViewById<View>(R.id.book_author) as TextView
         var bookPriceTextView: TextView = v.findViewById<View>(R.id.book_price) as TextView
-        var bookSellerTextView: TextView = v.findViewById<View>(R.id.book_review) as TextView
+        var bookSellerTextView: TextView = v.findViewById<View>(R.id.book_seller) as TextView
+
+        init {
+            v.setOnClickListener(this)
+        }
+
+        override fun onClick(view: View) {
+            CustomInterestsAdapter.clickListener!!.onItemClick(getAdapterPosition(), view)
+        }
     }
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
-        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item, viewGroup, false)
-
-        //v.setOnClickListener(mOnClickListener);
+        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item_market, viewGroup, false)
 
         return ViewHolder(v)
     }
@@ -53,7 +59,15 @@ class CustomInterestsAdapter
         return mDataSetTitle.size
     }
 
+    fun setOnItemClickListener(clickListener: ClickListener) {
+        CustomInterestsAdapter.clickListener = clickListener
+    }
+
+    interface ClickListener {
+        fun onItemClick(position: Int, v: View)
+    }
+
     companion object {
-        private val TAG = "CustomAdapter"
+        private var clickListener: CustomInterestsAdapter.ClickListener? = null
     }
 }

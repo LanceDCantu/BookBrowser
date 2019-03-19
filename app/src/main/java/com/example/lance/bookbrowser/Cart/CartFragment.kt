@@ -69,12 +69,6 @@ class CartFragment : Fragment() {
             mDatasetStore
         )
 
-        mAdapter.setOnItemClickListener(object : CustomCartAdapter.ClickListener {
-            override fun onItemClick(position: Int, v: View) {
-                Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
-            }
-        })
-
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         // END_INCLUDE(initializeRecyclerView)

@@ -12,7 +12,9 @@ import com.algolia.instantsearch.core.helpers.Searcher
 import com.algolia.instantsearch.ui.helpers.InstantSearch
 import com.algolia.instantsearch.ui.utils.ItemClickSupport
 import com.example.lance.bookbrowser.Cart.Cart
+import kotlinx.android.synthetic.main.activity_main_search.*
 import kotlinx.android.synthetic.main.activity_market_search.*
+import kotlinx.android.synthetic.main.product_item_market.view.*
 
 
 class MarketSearchActivity : AppCompatActivity() {
@@ -66,20 +68,16 @@ class MarketSearchActivity : AppCompatActivity() {
 
         ItemClickSupport.addTo(market_hits).setOnItemClickListener(object : ItemClickSupport.OnItemClickListener {
             override fun onItemClick(recyclerView: RecyclerView, position: Int, v: View) {
-                Toast.makeText(this@MarketSearchActivity, "we did it!", Toast.LENGTH_SHORT).show()
+                var clicked_view : View = market_hits.getChildAt(position)
+                var isbn_clicked : String? = clicked_view.book_isbn.text.toString()
+                var market_id_clicked : String? = clicked_view.market_id.text.toString()
+
+                val intent = Intent(this@MarketSearchActivity, BookInfoMarket::class.java)
+                intent.putExtra("book_isbn", isbn_clicked)
+                intent.putExtra("market_id", market_id_clicked)
+                startActivity(intent)
             }
         })
-
-        val quick_launch = findViewById<Button>(R.id.market_quick_launch_book_button)
-
-        // set on-click listener
-        quick_launch.setOnClickListener {
-            val intent = Intent(this, BookInfoMarket::class.java)
-            intent.putExtra("book_isbn", "9789402306538")
-            intent.putExtra("market_id", "-L_6dO9oK5DLIC4ZVzcX")
-            intent.putExtra("is_owner", false)
-            startActivity(intent)
-        }
 
         searcher = Searcher.create("BFI0J5Z2YU","4d6cd0c8a3cb8de4ecf73dd0389a53e0", "market")
         helper = InstantSearch(this, searcher)

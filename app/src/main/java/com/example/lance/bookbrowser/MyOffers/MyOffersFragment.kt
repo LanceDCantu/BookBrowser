@@ -74,6 +74,12 @@ class MyOffersFragment : Fragment() {
         mRecyclerView.adapter = mAdapter
         // END_INCLUDE(initializeRecyclerView)
 
+        mAdapter.setOnItemClickListener(object : CustomOffersAdapter.ClickListener {
+            override fun onItemClick(position: Int, v: View) {
+                Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         return rootView
     }
 

@@ -25,7 +25,7 @@ RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
         var bookTitleTextView: TextView = v.findViewById<View>(R.id.book_title) as TextView
         var bookAuthorTextView: TextView = v.findViewById<View>(R.id.book_author) as TextView
         var bookPriceTextView: TextView = v.findViewById<View>(R.id.book_price) as TextView
-        var bookStoreTextView: TextView = v.findViewById<View>(R.id.book_review) as TextView
+        var bookStoreTextView: TextView = v.findViewById<View>(R.id.book_isbn) as TextView
 
         init {
             v.setOnClickListener(this)

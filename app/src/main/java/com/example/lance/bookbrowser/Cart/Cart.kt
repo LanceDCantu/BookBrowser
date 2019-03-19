@@ -58,11 +58,10 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
         var taxText: TextView = findViewById(R.id.tax_text)
         var totalText: TextView = findViewById(R.id.total_text)
 
-        //could find a way to increment through this alternatively
-        subtotalText.text = "$" + monetaryValues[0].toString()
-        feesText.text = "$" + monetaryValues[1].toString()
-        taxText.text = "$" + monetaryValues[2].toString()
-        totalText.text = "$" + monetaryValues[3].toString()
+        subtotalText.text =  "$" + String.format("%.2f", monetaryValues[0])
+        feesText.text = "$" + String.format("%.2f", monetaryValues[1])
+        taxText.text = "$" + String.format("%.2f", monetaryValues[2])
+        totalText.text = "$" + String.format("%.2f", monetaryValues[3])
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,7 +87,6 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
 
         // set on-click listener
         reserve_books.setOnClickListener {
-
             val menuListener = object : ValueEventListener
             {
                 @SuppressLint("NewApi", "SimpleDateFormat")
@@ -124,7 +122,6 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
                     if(sending_order.books.size != 0) {
 
                         var pushRef: DatabaseReference = orders_ref.push()
-                        var pushKey: String = pushRef.key!!
 
                         var cartPushRef: DatabaseReference = users_ref.child("lancedcantu@yahoo!com/" + "cart/")
 
@@ -144,8 +141,6 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
             users_ref.child("lancedcantu@yahoo!com/" + "cart/").addListenerForSingleValueEvent(menuListener)
         }
     }
-
-
 }
 
 

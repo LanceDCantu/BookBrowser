@@ -82,4 +82,6 @@
     <string name="my_account">My Account</string>
     <string name="about_us">About Us</string>
     <string name="title_activity_create_account">Create Account</string>
+    <string name="details">Details</string>
+    <string name="none">none</string>
 </resources>

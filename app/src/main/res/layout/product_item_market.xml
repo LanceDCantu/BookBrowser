@@ -6,13 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:orientation="vertical"
     android:clickable="true">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/book"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="98dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="@string/book_title"
+                    android:text="title"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -34,7 +34,7 @@
                     android:id="@+id/book_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/author_name"
+                    android:text="author"
                     android:textSize="12sp"
                     algolia:attribute='@{"authors"}'/>
 
@@ -43,18 +43,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorDarkRed"
-                    android:text="@string/price"
+                    android:text="asking"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     algolia:attribute='@{"asking_price"}'/>
 
                 <TextView
-                    android:id="@+id/book_review"
+                    android:id="@+id/book_seller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/book_title"
+                    android:text="seller"
                     android:textSize="12sp"
                     algolia:attribute='@{"seller"}'/>
+
+                <TextView
+                        android:id="@+id/market_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="err"
+                        android:textSize="12sp"
+                        android:layout_marginTop="10dp"
+                        algolia:attribute='@{"market_id"}'/>
+
+                <TextView
+                        android:id="@+id/book_isbn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="err"
+                        android:textSize="12sp"
+                        android:layout_marginTop="10dp"
+                        algolia:attribute='@{"isbn"}'/>
             </LinearLayout>
             <ImageView
                 android:layout_width="123dp"
@@ -68,5 +86,10 @@
                 android:layout_marginTop="4dp"/>
 
         </android.support.constraint.ConstraintLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorGray"/>
     </LinearLayout>
 </layout>

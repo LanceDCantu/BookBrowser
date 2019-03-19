@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
+import com.google.android.gms.tasks.OnCompleteListener
 import com.example.lance.bookbrowser.Cart.Cart
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
@@ -26,6 +24,7 @@ class BookInfoStore : AppCompatActivity() {
     private lateinit var book_info : Book
 
     val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
+    val product_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e.firebaseio.com").reference
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -64,18 +63,30 @@ class BookInfoStore : AppCompatActivity() {
 
         val intent = intent
         isbn = intent.getStringExtra("book_isbn")
-        var task_result = fetchCloudBookInfo(isbn)
-
-        var test = task_result.result
 
         navigation_book_store.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_book_store)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        initBookData()
+        initBookData(isbn)
 
         initializeBottomNavigation()
+
+        fetchCloudBookInfo(isbn)
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    val e = task.exception
+                    Toast.makeText(this@BookInfoStore, "fail", Toast.LENGTH_LONG).show()
+                    return@OnCompleteListener
+                    // [END_EXCLUDE]
+                }
+
+                // [START_EXCLUDE]
+                Toast.makeText(this@BookInfoStore, "pass", Toast.LENGTH_LONG).show()
+                val result = task.result
+                // [END_EXCLUDE]
+            })
 
         val spinner: Spinner = findViewById(R.id.stores_spinner)
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -117,17 +128,43 @@ class BookInfoStore : AppCompatActivity() {
         }
     }
 
-    private fun initBookData()
+    private fun initBookData(isbn : String)
     {
         book_info = Book("none", "none", "none", 0.0, "none")
 
-        book_info.store = "Grassroots Books"
-        book_info.price = 7.23
-        book_info.title = "Crazy Rich Asians"
-        book_info.author = "Kevin Kwan"
-        //book_info.isbn = isbn //This gets the isbn properly from what we send in
+        val userListener = object : ValueEventListener
+        {
+            override fun onDataChange(dataSnapshot: DataSnapshot)
+            {
+                val title_textView: TextView = findViewById(R.id.book_title_text)
+                val author_textView: TextView = findViewById(R.id.book_author_text)
+                val price_textView: TextView = findViewById(R.id.book_price_text)
+                val isbn_textView: TextView = findViewById(R.id.book_isbn_text)
+                val description_textView: TextView = findViewById(R.id.book_description_text)
 
-        book_info.isbn = "9786020618753"
+                title_textView.text = dataSnapshot.child("/title/").value.toString()
+                author_textView.text = dataSnapshot.child("/authors/").children.elementAt(0).value.toString()
+                price_textView.text = "$2.14"
+                isbn_textView.text = dataSnapshot.key
+
+                if(dataSnapshot.child("/longDescription/").value.toString() != "null")
+                {
+                    description_textView.text =  "Description: " + dataSnapshot.child("/longDescription/").value.toString()
+                }
+
+                book_info.price = 2.14
+                book_info.title = dataSnapshot.child("/title/").value.toString()
+                book_info.author = dataSnapshot.child("/authors/").children.elementAt(0).value.toString()
+                book_info.isbn = dataSnapshot.key.toString()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError)
+            {
+                println("loadPost:onCancelled ${databaseError.toException()}")
+            }
+
+        }
+        product_ref.child("products/" + isbn + "/").addListenerForSingleValueEvent(userListener)
     }
     private fun initializeBottomNavigation()
     {
