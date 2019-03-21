@@ -15,13 +15,19 @@ import com.google.firebase.functions.FirebaseFunctions
 import kotlinx.android.synthetic.main.activity_store_locater.*
 import kotlinx.android.synthetic.main.book_info_store.*
 import java.text.SimpleDateFormat
+import com.google.firebase.functions.HttpsCallableResult
+import android.support.annotation.NonNull
+import android.text.Html
+import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.Continuation
+
 
 class BookInfoStore : AppCompatActivity() {
 
-    private lateinit var isbn : String
+    private lateinit var isbn: String
     private lateinit var functions: FirebaseFunctions
 
-    private lateinit var book_info : Book
+    private lateinit var book_info: Book
 
     val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     val product_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e.firebaseio.com").reference
@@ -57,9 +63,11 @@ class BookInfoStore : AppCompatActivity() {
         false
     }
 
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.book_info_store)
+
+        functions = FirebaseFunctions.getInstance()
 
         val intent = intent
         isbn = intent.getStringExtra("book_isbn")
@@ -77,13 +85,20 @@ class BookInfoStore : AppCompatActivity() {
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
-                    Toast.makeText(this@BookInfoStore, "fail", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@BookInfoStore, e?.message, Toast.LENGTH_LONG).show()
                     return@OnCompleteListener
                     // [END_EXCLUDE]
                 }
 
                 // [START_EXCLUDE]
-                Toast.makeText(this@BookInfoStore, "pass", Toast.LENGTH_LONG).show()
+
+                val url = task.getResult()?.get("bookImageURL") as String
+                val imageView = findViewById<ImageView>(R.id.imageView2)
+                Glide.with(this@BookInfoStore).load(url).into(imageView)
+
+                val description = task.getResult()?.get("description") as String
+                val descriptionView = findViewById<TextView>(R.id.book_description_text)
+                descriptionView.setText(Html.fromHtml(description, Html.FROM_HTML_MODE_COMPACT))
                 val result = task.result
                 // [END_EXCLUDE]
             })
@@ -113,13 +128,11 @@ class BookInfoStore : AppCompatActivity() {
             sending_book.price = book_info.price
             sending_book.store = spinner.getSelectedItem().toString()
 
-            if(spinner.getSelectedItem().toString() == "Select Store")
-            {
+            if (spinner.getSelectedItem().toString() == "Select Store") {
                 Toast.makeText(this@BookInfoStore, "Please Select a Store", Toast.LENGTH_SHORT).show()
-            }
-            else
-            {
-                var pushRef: DatabaseReference = users_ref.child("lancedcantu@yahoo!com/" + "cart/" + book_info.isbn + "/")
+            } else {
+                var pushRef: DatabaseReference =
+                    users_ref.child("lancedcantu@yahoo!com/" + "cart/" + book_info.isbn + "/")
 
                 pushRef.setValue(sending_book)
 
@@ -128,14 +141,11 @@ class BookInfoStore : AppCompatActivity() {
         }
     }
 
-    private fun initBookData(isbn : String)
-    {
+    private fun initBookData(isbn: String) {
         book_info = Book("none", "none", "none", 0.0, "none")
 
-        val userListener = object : ValueEventListener
-        {
-            override fun onDataChange(dataSnapshot: DataSnapshot)
-            {
+        val userListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val title_textView: TextView = findViewById(R.id.book_title_text)
                 val author_textView: TextView = findViewById(R.id.book_author_text)
                 val price_textView: TextView = findViewById(R.id.book_price_text)
@@ -147,9 +157,9 @@ class BookInfoStore : AppCompatActivity() {
                 price_textView.text = "$2.14"
                 isbn_textView.text = dataSnapshot.key
 
-                if(dataSnapshot.child("/longDescription/").value.toString() != "null")
-                {
-                    description_textView.text =  "Description: " + dataSnapshot.child("/longDescription/").value.toString()
+                if (dataSnapshot.child("/longDescription/").value.toString() != "null") {
+                    description_textView.text =
+                        "Description: " + dataSnapshot.child("/longDescription/").value.toString()
                 }
 
                 book_info.price = 2.14
@@ -158,16 +168,15 @@ class BookInfoStore : AppCompatActivity() {
                 book_info.isbn = dataSnapshot.key.toString()
             }
 
-            override fun onCancelled(databaseError: DatabaseError)
-            {
+            override fun onCancelled(databaseError: DatabaseError) {
                 println("loadPost:onCancelled ${databaseError.toException()}")
             }
 
         }
         product_ref.child("products/" + isbn + "/").addListenerForSingleValueEvent(userListener)
     }
-    private fun initializeBottomNavigation()
-    {
+
+    private fun initializeBottomNavigation() {
         navigation_book_store.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_book_store)
@@ -176,19 +185,19 @@ class BookInfoStore : AppCompatActivity() {
         bottomNavigation.getMenu().findItem(R.id.navigation_browse).setChecked(true)
     }
 
-    private fun fetchCloudBookInfo(book_isbn : String) : Task <String> {
+    private fun fetchCloudBookInfo(book_isbn: String): Task<Map<String, Any>> {
         val data = hashMapOf(
             "isbn" to book_isbn
         )
 
-        functions = FirebaseFunctions.getInstance()
-
         return functions
-            .getHttpsCallable("bookInfo")
+            .getHttpsCallable("bookInfov2")
             .call(data)
-            .continueWith { task ->
-                val result = task.result?.data as String
+            .continueWith{ task ->
+                val result = task.result?.data as Map<String, Any>
                 result
+
             }
     }
 }
+
