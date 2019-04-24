@@ -121,6 +121,8 @@ class BookInfoStore : AppCompatActivity() {
 
         // set on-click listener
         add_to_cart_button.setOnClickListener {
+            val myUser = UserData.getData()
+            //println(myUser)
             var sending_book = Book("none", "none", "none", 0.0, "none")
 
             sending_book.title = book_info.title
@@ -132,7 +134,7 @@ class BookInfoStore : AppCompatActivity() {
                 Toast.makeText(this@BookInfoStore, "Please Select a Store", Toast.LENGTH_SHORT).show()
             } else {
                 var pushRef: DatabaseReference =
-                    users_ref.child("lancedcantu@yahoo!com/" + "cart/" + book_info.isbn + "/")
+                    users_ref.child(("$myUser") + "/" + "cart/" + book_info.isbn + "/")
 
                 pushRef.setValue(sending_book)
 

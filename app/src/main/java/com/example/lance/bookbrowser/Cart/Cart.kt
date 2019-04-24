@@ -20,6 +20,8 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
 
     val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     val orders_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-orders.firebaseio.com").reference
+    val myUser = UserData.getData()
+
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -92,8 +94,10 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
                 @SuppressLint("NewApi", "SimpleDateFormat")
                 override fun onDataChange(dataSnapshot: DataSnapshot)
                 {
+                    val username = myUser?.substringBefore("@")
+                    //println("$username")
                     var sending_order =
-                        Order("none", "none", 0.0, "none", "lancedcantu", mutableListOf())
+                        Order("none", "none", 0.0, "none", "$username", mutableListOf())
                     var temp_book = Book("none", "none", "none", 0.0, "none")
 
                     val date = Calendar.getInstance().time
@@ -123,7 +127,7 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
 
                         var pushRef: DatabaseReference = orders_ref.push()
 
-                        var cartPushRef: DatabaseReference = users_ref.child("lancedcantu@yahoo!com/" + "cart/")
+                        var cartPushRef: DatabaseReference = users_ref.child(myUser + "/" + "cart/")
 
                         cartPushRef.setValue(null)
 
@@ -138,7 +142,7 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
                 }
             }
             //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
-            users_ref.child("lancedcantu@yahoo!com/" + "cart/").addListenerForSingleValueEvent(menuListener)
+            users_ref.child(myUser + "/" + "cart/").addListenerForSingleValueEvent(menuListener)
         }
     }
 }

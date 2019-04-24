@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class FireBaseLogin : AppCompatActivity(), View.OnClickListener {
 
@@ -22,6 +24,8 @@ class FireBaseLogin : AppCompatActivity(), View.OnClickListener {
     lateinit var editTextEmail: EditText
     lateinit var editTextPassword: EditText
     lateinit var progressBar: ProgressBar
+    //val write_to_user = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
+    //var user : User = User ("none", 0, 0,0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,8 +76,19 @@ class FireBaseLogin : AppCompatActivity(), View.OnClickListener {
             progressBar.visibility = View.GONE
             if (task.isSuccessful) {
                 finish()
+                val user_id = email.replace('.','!',true)
+                UserData.setData(user_id)
+//
+//                var pushRef: DatabaseReference =
+//                    write_to_user.child(user_id + "/")
+//
+//                pushRef.setValue(user)
+//
+                //val intent = Intent(this@FireBaseLogin, MyAccount::class.java)
+                //intent.putExtra("user_id", user_id)
                 val intent = Intent(this@FireBaseLogin, MainSearchActivity::class.java)
                 startActivity(intent)
+
                 Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(applicationContext, task.exception!!.message, Toast.LENGTH_SHORT).show()

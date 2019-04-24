@@ -28,6 +28,7 @@ class BookInfoMarket : AppCompatActivity() {
 
     val market_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-market.firebaseio.com/").reference
     val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com/").reference
+    val myUser = UserData.getData()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -181,12 +182,13 @@ class BookInfoMarket : AppCompatActivity() {
             }
 
         }
-        users_ref.child("lancedcantu@yahoo!com/" + "my_interests/").addListenerForSingleValueEvent(userListener)
+        users_ref.child(myUser + "/" + "my_interests/").addListenerForSingleValueEvent(userListener)
     }
 
     private fun addToInterests(market_id_add : String)
     {
-        var pushRef: DatabaseReference = users_ref.child("lancedcantu@yahoo!com/" + "my_interests/" + market_id_add)
+        println(myUser)
+        var pushRef: DatabaseReference = users_ref.child(myUser + "/" + "my_interests/" + market_id_add)
 
         pushRef.setValue(market_id_add)
 
@@ -210,6 +212,6 @@ class BookInfoMarket : AppCompatActivity() {
             }
 
         }
-        users_ref.child("lancedcantu@yahoo!com/" + "my_interests/").addListenerForSingleValueEvent(userListener)
+        users_ref.child(myUser + "/" + "my_interests/").addListenerForSingleValueEvent(userListener)
     }
 }

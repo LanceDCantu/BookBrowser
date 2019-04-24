@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.lance.bookbrowser.R
+import com.example.lance.bookbrowser.UserData
 import com.google.firebase.database.*
 import com.google.firebase.database.DataSnapshot
 
@@ -17,6 +18,7 @@ class MyInterestsFragment : Fragment() {
 
     val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     val market_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-market.firebaseio.com").reference
+    val myUser = UserData.getData()
 
     enum class LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -113,7 +115,7 @@ class MyInterestsFragment : Fragment() {
         }
         //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
         //we only want to a do a query if the user updates not the market
-        users_ref.child("lancedcantu@yahoo!com/" + "my_interests/").addValueEventListener(menuListener)
+        users_ref.child(myUser + "/" + "my_interests/").addValueEventListener(menuListener)
     }
 
     private fun readMarketData()

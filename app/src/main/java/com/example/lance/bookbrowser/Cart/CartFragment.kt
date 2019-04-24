@@ -15,10 +15,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.example.lance.bookbrowser.Cart.CustomCartAdapter.ClickListener
+import com.example.lance.bookbrowser.UserData
 
 class CartFragment : Fragment() {
 
     val secondary = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
+    val myUser = UserData.getData()
 
     enum class LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -143,7 +145,7 @@ class CartFragment : Fragment() {
             }
         }
         //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
-        secondary.child("lancedcantu@yahoo!com/" + "cart/").addValueEventListener(menuListener)
+        secondary.child(myUser + "/" + "cart/").addValueEventListener(menuListener)
     }
 
 

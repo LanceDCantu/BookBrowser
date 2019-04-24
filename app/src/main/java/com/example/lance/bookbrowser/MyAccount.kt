@@ -18,7 +18,7 @@ class MyAccount : AppCompatActivity() {
     val secondary = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     var storageRef = FirebaseStorage.getInstance().reference.child("profile_pics/" + "blue.jpg")
 
-    var user : User = User (MutableList(1) { Book("none", "none", "none",0.0, "none") }, "none", "none", 0,0,0, "none")
+    var user : User = User ("none", "null", "null","null")
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -72,14 +72,10 @@ class MyAccount : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot)
             {
                 //write method to extract data in a User object
-                user.username = dataSnapshot.child("/user_info/username/").value.toString()
                 user.picture = dataSnapshot.child("/user_info/picture/").value.toString()
-                user.successful_sales = dataSnapshot.child("/user_info/successful_sales/").value as Long
-                user.thumbs_up = dataSnapshot.child("/user_info/thumbs_up/").value as Long
-                user.thumbs_down = dataSnapshot.child("/user_info/thumbs_down/").value as Long
-
-                val username_textView: TextView = findViewById(R.id.username_text_input)
-                username_textView.text = user.username
+                user.successful_sales = dataSnapshot.child("/user_info/successful_sales/").value.toString()
+                user.thumbs_up = dataSnapshot.child("/user_info/thumbs_up/").value.toString()
+                user.thumbs_down = dataSnapshot.child("/user_info/thumbs_down/").value.toString()
 
                 val email_TextView: TextView = findViewById(R.id.email_text_input)
                 email_TextView.text = dataSnapshot.key!!.replace('!','.',true)
@@ -103,7 +99,11 @@ class MyAccount : AppCompatActivity() {
             }
         }
         //this is how we query for the specific user, we need to make the "lancedcantu" dynamic
-        secondary.child("lancedcantu@yahoo!com/").addListenerForSingleValueEvent(menuListener)
+        //val profile = intent.getStringExtra("user_id")
+        //println(profile)
+        val myUser = UserData.getData()
+        //println(myUser)
+        secondary.child(myUser + "/").addListenerForSingleValueEvent(menuListener)
     }
 }
 
