@@ -7,6 +7,7 @@ object UserData {
     }
 
     fun setData(data: String): Boolean{
+        println("this is for changing purposes. delete this println")
         UserData.data = data
         return true
     }
