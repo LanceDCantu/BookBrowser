@@ -78,6 +78,7 @@ class FireBaseLogin : AppCompatActivity(), View.OnClickListener {
                 finish()
                 val user_id = email.replace('.','!',true)
                 UserData.setData(user_id)
+                println("this is for change purposes. Delete this println")
 //
 //                var pushRef: DatabaseReference =
 //                    write_to_user.child(user_id + "/")
