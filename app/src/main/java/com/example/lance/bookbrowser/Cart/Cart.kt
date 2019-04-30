@@ -129,6 +129,9 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
 
                         var cartPushRef: DatabaseReference = users_ref.child(myUser + "/" + "cart/")
 
+                        var historyPushRef: DatabaseReference = users_ref.child(myUser + "/order_history/")
+                        historyPushRef.setValue(sending_order.books)
+
                         cartPushRef.setValue(null)
 
                         pushRef.setValue(sending_order)

@@ -136,7 +136,11 @@ class BookInfoStore : AppCompatActivity() {
                 var pushRef: DatabaseReference =
                     users_ref.child(("$myUser") + "/" + "cart/" + book_info.isbn + "/")
 
+                //var pushRef1: DatabaseReference =
+                        //   users_ref.child(("$myUser") + "/" + "orderHistory/" + "/")
+
                 pushRef.setValue(sending_book)
+                //pushRef1.setValue(sending_book)
 
                 Toast.makeText(this@BookInfoStore, "Added to Cart", Toast.LENGTH_LONG).show()
             }

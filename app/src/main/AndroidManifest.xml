@@ -18,10 +18,17 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        
 
-        <!-- <activity android:name=".UserData">
-        </activity> -->
-
+        <activity
+                android:name=".OrderHistory.OrderHistory"
+                android:label="Book Browser"
+                android:noHistory="true">
+        </activity>
+        <!--
+         <activity android:name=".UserData">
+        </activity>
+        -->
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="@string/google_maps_key"/>
@@ -45,7 +52,6 @@
         <activity
                 android:name=".MyAccount"
                 android:label="@string/my_account"
-                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
