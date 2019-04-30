@@ -10,8 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.lance.bookbrowser.*
 import com.example.lance.bookbrowser.Cart.Cart
+import com.example.lance.bookbrowser.R
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_my_interests.*
-import kotlinx.android.synthetic.main.activity_store_locater.*
 
 class MyMessaging : AppCompatActivity() {
 
@@ -48,9 +49,11 @@ class MyMessaging : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_messages)
+        setContentView(R.layout.emily_messages_activity)
 
         navigation_interests.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_interests)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -62,10 +65,87 @@ class MyMessaging : AppCompatActivity() {
 
         val send_message_button = findViewById<Button>(R.id.send_message_button)
 
+        // reference to the messages database
+        val messages_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-messages-1dd33.firebaseio.com/").reference
+
+        val childListener = object : ChildEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+                //Empty
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+                //Empty
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                //Empty
+            }
+
+            override fun onChildRemoved(p0: DataSnapshot) {
+                //Empty
+            }
+
+            override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
+
+                val message = dataSnapshot.getValue<Message>(Message::class.java)
+
+                messagesList.plus(message)
+
+                println("child message: " + message?.data)
+
+            }
+        }
+        val messageListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+               dataSnapshot.children.mapNotNullTo(messagesList){
+                   it.getValue<Message>(Message::class.java)
+               }
+                messagesList.forEach{
+                    println("message: " + it?.data)
+                }
+
+
+
+            }
+
+
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                println("loadPost:onCancelled ${databaseError.toException()}")
+            }
+        }
+
+
+
+        messages_ref.addListenerForSingleValueEvent(messageListener)
+
+
         // set on-click listener
         send_message_button.setOnClickListener {
-            Toast.makeText(this, "Send Message! " + send_message.text, Toast.LENGTH_LONG).show()
-            messages.text =  send_message.text
+            val sendText = send_message.text.toString()
+            if(!sendText.isEmpty()) {
+                Toast.makeText(this, "Send Message! " + sendText, Toast.LENGTH_LONG).show()
+
+                var pushRef: DatabaseReference = messages_ref.push()
+
+                var message = Message(sendText)
+
+
+                pushRef.setValue(message)
+
+                Toast.makeText(this, "Added to Messages", Toast.LENGTH_LONG).show()
+
+                send_message.setText("")
+            }
         }
+    }
+
+    private val messagesList : MutableList<Message> = mutableListOf()
+
+    companion object {
+
+        private val TAG = "MyMessaging"
+
     }
 }

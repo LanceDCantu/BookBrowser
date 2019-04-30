@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat
 import com.google.firebase.functions.HttpsCallableResult
 import android.support.annotation.NonNull
 import android.text.Html
+import android.webkit.WebView
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Continuation
 
@@ -99,6 +100,11 @@ class BookInfoStore : AppCompatActivity() {
                 val description = task.getResult()?.get("description") as String
                 val descriptionView = findViewById<TextView>(R.id.book_description_text)
                 descriptionView.setText(Html.fromHtml(description, Html.FROM_HTML_MODE_COMPACT))
+
+                val reviews = task.getResult()?.get("reviews") as String
+                val reviewsWebView = findViewById<WebView>(R.id.reviews)
+                reviewsWebView.loadData(reviews, "text/html", "utf-8" )
+
                 val result = task.result
                 // [END_EXCLUDE]
             })

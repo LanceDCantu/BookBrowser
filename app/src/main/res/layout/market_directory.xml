@@ -61,6 +61,19 @@
                 android:text="My Offers"
                 android:textAllCaps="false"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
+
+        <Button
+                android:id="@+id/my_messages_button"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_button_grey"
+                android:textColor="#393939"
+                android:textSize="18sp"
+                android:text="My Messages"
+                android:textAllCaps="false"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
