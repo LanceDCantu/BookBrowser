@@ -20,6 +20,7 @@ import com.example.lance.bookbrowser.StoreLocater.StoreLocater
 
 class BookInfoStore : AppCompatActivity() {
 
+    
     private lateinit var isbn: String
     private lateinit var functions: FirebaseFunctions
 
