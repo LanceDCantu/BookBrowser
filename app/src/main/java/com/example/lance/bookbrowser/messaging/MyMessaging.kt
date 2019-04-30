@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.lance.bookbrowser.*
 import com.example.lance.bookbrowser.Cart.Cart
 import com.example.lance.bookbrowser.R
+import com.example.lance.bookbrowser.StoreLocater.StoreLocater
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_my_interests.*
 

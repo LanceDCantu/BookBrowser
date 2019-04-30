@@ -36,7 +36,7 @@ RecyclerView.Adapter<CustomMessageAdapter.ViewHolder>() {
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        viewHolder.messageTextView.text = mDataSetMessages[position]!!.body
+        viewHolder.messageTextView.text = mDataSetMessages[position]!!.data
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
