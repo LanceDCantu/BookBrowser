@@ -90,13 +90,16 @@ class MyMessaging : AppCompatActivity() {
 
                 val message = dataSnapshot.getValue<Message>(Message::class.java)
 
-                messagesList.plus(message)
+              //  messagesList.plus(message)
 
-                println("child message: " + message?.data)
+                var current = messages.text.toString()
+                current += '\n'
+                current += message?.data
+                messages.text = current
 
             }
         }
-        val messageListener = object : ValueEventListener {
+      /*  val messageListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                dataSnapshot.children.mapNotNullTo(messagesList){
@@ -117,9 +120,10 @@ class MyMessaging : AppCompatActivity() {
             }
         }
 
+*/
 
-
-        messages_ref.addListenerForSingleValueEvent(messageListener)
+   //     messages_ref.addListenerForSingleValueEvent(messageListener)
+        messages_ref.addChildEventListener(childListener)
 
 
         // set on-click listener
@@ -142,7 +146,7 @@ class MyMessaging : AppCompatActivity() {
         }
     }
 
-    private val messagesList : MutableList<Message> = mutableListOf()
+   // private val messagesList : MutableList<Message> = mutableListOf()
 
     companion object {
 
