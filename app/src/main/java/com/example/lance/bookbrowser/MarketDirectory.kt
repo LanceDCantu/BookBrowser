@@ -8,6 +8,8 @@ import android.widget.Button
 import com.example.lance.bookbrowser.Cart.Cart
 import com.example.lance.bookbrowser.MyInterests.MyInterests
 import com.example.lance.bookbrowser.MyOffers.MyOffers
+import com.example.lance.bookbrowser.StoreLocater.StoreLocater
+import com.example.lance.bookbrowser.messaging.MyMessaging
 import kotlinx.android.synthetic.main.market_directory.*
 
 class MarketDirectory : AppCompatActivity() {
@@ -77,6 +79,13 @@ class MarketDirectory : AppCompatActivity() {
         // set on-click listener
         my_offers_button.setOnClickListener {
             val intent = Intent(this, MyOffers::class.java)
+            startActivity(intent)
+        }
+
+        val my_messages_button = findViewById<Button>(R.id.my_messages_button)
+
+        my_messages_button.setOnClickListener{
+            val intent = Intent(this, MyMessaging::class.java)
             startActivity(intent)
         }
     }

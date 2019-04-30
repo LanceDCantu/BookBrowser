@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<br/>
+<h1>Inventory</h1>
+
+<ul>
+  <li><a  href="index2.html">Home</a></li>
+  <li><a href="orders2.html">Orders</a></li>
+  <li><a class="active" href="stock2.html">Stock</a></li>
+  <li style="float:right"><a href="index.html">Log Out</a></li>
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-functions.js"></script>
+
+<table style="width:100%" id="ex-table">
+  <tr id="tr">
+    <th>Book Title</th>
+    <th>Author</th> 
+    <th>ISBN</th>
+    <th>Price</th>
+    <th>In Stock</th>
+ </table> 
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBMHbLOb8wR4UcBuaBTy9HNfPat2em1l2o",
+    authDomain: "bookbrowser-9108e.firebaseapp.com",
+    databaseURL: "https://bookbrowser-9108e-sellers.firebaseio.com/",
+    projectId: "bookbrowser-9108e",
+    storageBucket: "bookbrowser-9108e.appspot.com",
+    messagingSenderId: "365422859265"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script> //for multiple databases
+
+// init
+const orderDatabase = firebase.initializeApp({
+  databaseURL: "https://bookbrowser-9108e-orders.firebaseio.com/"
+}, 'orderDatabase');
+
+const userDatabase = firebase.initializeApp({
+  databaseURL: "https://bookbrowser-9108e-users.firebaseio.com/"
+}, 'userDatabase');
+
+const sellerDatabase = firebase.initializeApp({
+  databaseURL: "https://bookbrowser-9108e-sellers.firebaseio.com/"
+}, 'sellerDatabase');
+
+
+
+</script>
+  
+<script>
+//table script
+    
+var database = firebase.database(sellerDatabase);
+    database.ref().once('value', function(snapshot){
+        if(snapshot.exists()){ //check there are orders
+            var content = '';
+            snapshot.forEach(function(data){//for each order
+				var checkStock = data.hasChildren();
+				if( checkStock ){
+				data.forEach(function(numBooks){//to look into books
+					numBooks.forEach(function(bookData){
+						var val = bookData.val();
+						content +=  '<tr>';
+						content += '<td>' + val.A_title + '</td>';
+						content +='<td>' + val.Author + '</td>';
+						content +='<td>' + val.ISBN + '</td>';
+						content +='<td>' + val.Price +'</td>';
+						content +='<td>' + val.inStock +'</td>';
+						content += '</tr>';
+						
+					});
+				});
+				
+            }});
+            $('#ex-table').append(content);
+        }
+    });
+
+</script>
+
+</body>
+</html>

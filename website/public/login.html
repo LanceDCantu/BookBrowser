@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<br/>
+<br/>
+
+<ul>
+  <li><a  href="home.html">Home</a></li>
+  <li><a  href="orders.html">Orders</a></li>
+  <li><a href="stock.html">Stock</a></li>
+  <li style="float:right"><a href="login.html">Log In</a></li>
+</ul>
+  
+      <img src="img_avatar2.jpg" alt="Avatar" class="avatar"><br/>
+
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="username" >
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="password">
+        
+      <button onclick="CheckLogin()">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-functions.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBMHbLOb8wR4UcBuaBTy9HNfPat2em1l2o",
+    authDomain: "bookbrowser-9108e.firebaseapp.com",
+    databaseURL: "https://bookbrowser-9108e-orders.firebaseio.com/",
+    projectId: "bookbrowser-9108e",
+    storageBucket: "bookbrowser-9108e.appspot.com",
+    messagingSenderId: "365422859265"
+  };
+  firebase.initializeApp(config);
+  
+
+
+</script>
+
+<script> //for multiple databases
+
+// init
+const orderDatabase = firebase.initializeApp({
+  databaseURL: "https://bookbrowser-9108e-orders.firebaseio.com/"
+}, 'orderDatabase');
+
+const userDatabase = firebase.initializeApp({
+  databaseURL: "https://bookbrowser-9108e-users.firebaseio.com/"
+}, 'userDatabase');
+
+const sellerDatabase = firebase.initializeApp({
+  databaseURL: "https://bookbrowser-9108e-sellers.firebaseio.com/"
+}, 'sellerDatabase');
+
+
+
+</script>
+
+<script>
+    function CheckLogin(){
+		var checkUsername = document.getElementById('username').value;
+		var checkPassword = document.getElementById('password').value;
+		var database = firebase.database(sellerDatabase);
+		database.ref().once('value', function(snapshot){
+			if(snapshot.exists()){
+				snapshot.forEach(function(data){
+					var val = data.val();
+					if(val.username == checkUsername){
+						if(val.password == checkPassword){
+							window.location.href="index2.html";
+						}
+					}
+				});
+			}
+		});	
+    }
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>

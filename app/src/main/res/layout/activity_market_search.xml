@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
             android:queryHint="Search"
-            algolia:submitButtonEnabled="false" />
+            algolia:submitButtonEnabled="false"
+            algolia:autofocus="false"/>
 
     <com.algolia.instantsearch.ui.views.Hits
             android:id="@+id/market_hits"
@@ -29,6 +30,7 @@
             algolia:itemLayout="@layout/product_item_market"
             algolia:autoHideKeyboard="true"
             android:focusable="true">
+        <requestFocus />
     </com.algolia.instantsearch.ui.views.Hits>
 
     <android.support.design.widget.BottomNavigationView

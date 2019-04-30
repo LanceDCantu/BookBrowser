@@ -18,7 +18,8 @@
             android:iconifiedByDefault="false"
             android:queryHint="Search for title or authors..."
             android:clickable="true"
-            algolia:submitButtonEnabled="false" />
+            algolia:submitButtonEnabled="false"
+            algolia:autofocus="false"/>
 
     <com.algolia.instantsearch.ui.views.Hits
             android:id="@+id/hits"
@@ -30,6 +31,7 @@
             algolia:itemLayout="@layout/product_item"
             algolia:autoHideKeyboard="true"
             android:focusable="true">
+        <requestFocus />
     </com.algolia.instantsearch.ui.views.Hits>
 
     <android.support.design.widget.BottomNavigationView

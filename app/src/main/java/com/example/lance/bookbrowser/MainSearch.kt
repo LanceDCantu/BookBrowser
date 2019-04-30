@@ -22,15 +22,12 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
 import com.algolia.instantsearch.core.helpers.Searcher
 import com.algolia.instantsearch.ui.helpers.InstantSearch
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main_search.*
 import com.algolia.instantsearch.ui.utils.ItemClickSupport
 import com.example.lance.bookbrowser.Cart.Cart
-import kotlinx.android.synthetic.main.activity_cart.*
+import com.example.lance.bookbrowser.StoreLocater.StoreLocater
 import kotlinx.android.synthetic.main.product_item.view.*
 
 

@@ -15,7 +15,8 @@ class CustomCartAdapter
 //Initialize the dataset of the Adapter.
 
 (private val mDataSetTitle: Array<String?>, private val mDataSetAuthor: Array<String?>,
- private val mDataSetPrice: Array<String?>, private val mDataSetStore: Array<String?>) :
+ private val mDataSetPrice: Array<String?>, private val mDataSetStore: Array<String?>,
+ private val mDataSetIsbn: Array<String?>) :
 RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
 
     //Provide a reference to the type of views that you are using (custom ViewHolder)
@@ -25,7 +26,8 @@ RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
         var bookTitleTextView: TextView = v.findViewById<View>(R.id.book_title) as TextView
         var bookAuthorTextView: TextView = v.findViewById<View>(R.id.book_author) as TextView
         var bookPriceTextView: TextView = v.findViewById<View>(R.id.book_price) as TextView
-        var bookStoreTextView: TextView = v.findViewById<View>(R.id.book_isbn) as TextView
+        var bookStoreTextView: TextView = v.findViewById<View>(R.id.book_store) as TextView
+        var bookIsbnTextView: TextView = v.findViewById<View>(R.id.book_isbn) as TextView
 
         init {
             v.setOnClickListener(this)
@@ -39,7 +41,7 @@ RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
-        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item, viewGroup, false)
+        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item_cart, viewGroup, false)
         return ViewHolder(v)
     }
 
@@ -51,6 +53,7 @@ RecyclerView.Adapter<CustomCartAdapter.ViewHolder>() {
         viewHolder.bookAuthorTextView.text = mDataSetAuthor[position]
         viewHolder.bookPriceTextView.text = "$" + mDataSetPrice[position]
         viewHolder.bookStoreTextView.text = mDataSetStore[position]
+        viewHolder.bookIsbnTextView.text = mDataSetIsbn[position]
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 

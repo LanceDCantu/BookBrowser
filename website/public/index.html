@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<br/>
+<div style = "background-color: #CCD1D1"> <img src="reading.jpg" width= "100%" height = "50%" alt="Reading"></div>
+<h1>Welcome to Book Browser!</h1>
+<p>Hello, welcome to the website for the book browser app! To get started, log in using the "log in" button in the top right. To check your orders, click to the "Orders" button. To check you current inventory, click the "Stock" button</p>
+
+<h2>About Us</h2>
+
+<p>Welcome! This website contains any and all information regarding the development and usage of Book Browser. This app's development is connected to the course CS 426, Senior Projects in Computer Science, for the Spring 2019 semester at UNR.
+
+<h2>WHAT IS BOOK BROWSER?</h2>
+
+<p>Small bookstores do not necessarily have the luxury of marketing their inventory to a mass group of users the same way as Amazon or big chains. Book Browser will provide a platform for people who want to shop small to connect to small bookstores. Book Browser will allow users to browse through a bookstore’s inventory from the comfort of their own homes. This will help people who want to shop small and people who own local bookstores by connecting them in a convenient way.</p>
+
+
+
+
+<ul>
+  <li><a  class="active" href="index.html">Home</a></li>
+  <li><a  href="orders.html">Orders</a></li>
+  <li><a href="stock.html">Stock</a></li>
+  <li style="float:right"><a href="login.html">Log In</a></li>
+</ul>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-functions.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBMHbLOb8wR4UcBuaBTy9HNfPat2em1l2o",
+    authDomain: "bookbrowser-9108e.firebaseapp.com",
+    databaseURL: "https://bookbrowser-9108e-orders.firebaseio.com/",
+    projectId: "bookbrowser-9108e",
+    storageBucket: "bookbrowser-9108e.appspot.com",
+    messagingSenderId: "365422859265"
+  };
+  firebase.initializeApp(config);
+  
+
+
+</script>
+
+
+
+</body>
+</html>

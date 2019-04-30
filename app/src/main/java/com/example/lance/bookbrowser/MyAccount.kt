@@ -6,9 +6,12 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.lance.bookbrowser.Cart.Cart
 import com.example.lance.bookbrowser.OrderHistory.OrderHistory
+import com.example.lance.bookbrowser.StoreLocater.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -74,6 +77,14 @@ class MyAccount : AppCompatActivity() {
         })
 
         initUserData()
+
+        val change_picture = findViewById<TextView>(R.id.change_picture)
+
+        //Wait for the user to change their picture
+        change_picture.setOnClickListener {
+            //go to the add a picture situation
+            Toast.makeText(this@MyAccount, "Picture Addition", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initUserData()
@@ -100,8 +111,18 @@ class MyAccount : AppCompatActivity() {
                 val thumbsdown_TextView: TextView = findViewById(R.id.thumbs_down_text)
                 thumbsdown_TextView.text = user.thumbs_down.toString()
 
-                //var profile_pic_view : ImageView = findViewById(R.id.profile_pic_view)
-                //GlideApp.with(this@MyAccount).load(storageRef).into(profile_pic_view)
+                //If a picture exists for the user
+                if(user.picture != "")
+                {
+                    //Retrieve the picture from the Firestore via the email as the file name
+                    //var profile_pic_view : ImageView = findViewById(R.id.profile_pic_view)
+                    //GlideApp.with(this@MyAccount).load(storageRef).into(profile_pic_view)
+                }
+                else
+                {
+                    val change_picture = findViewById<TextView>(R.id.change_picture)
+                    change_picture.text = "Add"
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError)

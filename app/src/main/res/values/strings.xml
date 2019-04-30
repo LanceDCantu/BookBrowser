@@ -84,4 +84,6 @@
     <string name="title_activity_create_account">Create Account</string>
     <string name="details">Details</string>
     <string name="none">none</string>
+    <string name="welcome">Welcome to Book Browser!</string>
+    <string name="seller_notes">Seller\'s Notes</string>
 </resources>
