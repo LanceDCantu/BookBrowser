@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<br/>
+<h1>Orders Page</h1>
+<p>Current orders:</p>
+
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a class="active" href="orders.html">Orders</a></li>
+  <li><a href="stock.html">Stock</a></li>
+  <li style="float:right"><a href="login.html">Log In</a></li>
+</ul>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-functions.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBMHbLOb8wR4UcBuaBTy9HNfPat2em1l2o",
+    authDomain: "bookbrowser-9108e.firebaseapp.com",
+    databaseURL: "https://bookbrowser-9108e-orders.firebaseio.com/",
+    projectId: "bookbrowser-9108e",
+    storageBucket: "bookbrowser-9108e.appspot.com",
+    messagingSenderId: "365422859265"
+  };
+  firebase.initializeApp(config);
+  
+
+
+</script>
+
+<table style="width:100%" id="ex-table">
+  <tr id="tr">
+    <th>Books</th>
+    <th>Date Placed</th> 
+    <th>Store</th>
+    <th>Time Placed</th>
+    <th>Total</th>
+    <th>User</th>
+	<th>Order Complete?</th>
+ </table> 
+ 
+<script>
+    function DeleteRowFunction(o) {
+    
+     var p=o.parentNode.parentNode;
+         p.parentNode.removeChild(p);
+    }
+    </script>
+
+<p> Please log in to see this content </p>
+
+
+
+</body>
+</html>
