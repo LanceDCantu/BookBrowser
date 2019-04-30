@@ -11,11 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.example.lance.bookbrowser.BookInfoMarket
 import com.example.lance.bookbrowser.MyOffers.AddOffer
 import com.example.lance.bookbrowser.R
 import com.example.lance.bookbrowser.UserData
 import com.google.firebase.database.*
 import com.google.firebase.database.DataSnapshot
+import kotlinx.android.synthetic.main.activity_market_search.*
+import kotlinx.android.synthetic.main.product_item_market.view.*
 
 
 class MyOffersFragment : Fragment() {
@@ -35,6 +38,9 @@ class MyOffersFragment : Fragment() {
     var mDatasetAuthor: Array<String?> = arrayOfNulls(0)
     var mDatasetPrice: Array<String?> = arrayOfNulls(0)
     var mDatasetSeller: Array<String?> = arrayOfNulls(0)
+
+    var mDatasetIDs: Array<String?> = arrayOfNulls(0)
+    var mDatasetISBNs: Array<String?> = arrayOfNulls(0)
 
     var InterestIDs: Array<String?> = arrayOfNulls(0)
 
@@ -70,7 +76,9 @@ class MyOffersFragment : Fragment() {
             mDatasetTitle,
             mDatasetAuthor,
             mDatasetPrice,
-            mDatasetSeller
+            mDatasetSeller,
+            mDatasetIDs,
+            mDatasetISBNs
         )
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
@@ -78,7 +86,14 @@ class MyOffersFragment : Fragment() {
 
         mAdapter.setOnItemClickListener(object : CustomOffersAdapter.ClickListener {
             override fun onItemClick(position: Int, v: View) {
-                Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
+                var isbn_clicked : String? = v.book_isbn.text.toString()
+                var market_id_clicked : String? = v.market_id.text.toString()
+
+                val intent = Intent(activity, BookInfoMarket::class.java)
+                intent.putExtra("book_isbn", isbn_clicked)
+                intent.putExtra("market_id", market_id_clicked)
+                intent.putExtra("owner", myUser)
+                startActivity(intent)
             }
         })
 
@@ -130,6 +145,8 @@ class MyOffersFragment : Fragment() {
                 mDatasetAuthor = arrayOfNulls(num_user_interests)
                 mDatasetPrice = arrayOfNulls(num_user_interests)
                 mDatasetSeller = arrayOfNulls(num_user_interests)
+                mDatasetIDs = arrayOfNulls(num_user_interests)
+                mDatasetISBNs = arrayOfNulls(num_user_interests)
 
                 var index = 0
 
@@ -142,6 +159,8 @@ class MyOffersFragment : Fragment() {
                     mDatasetAuthor[index] = dataSnapshot.child("/" + offer_id + "/authors/").value.toString()
                     mDatasetPrice[index] = dataSnapshot.child("/" + offer_id + "/asking_price/").value.toString()
                     mDatasetSeller[index] = dataSnapshot.child("/" + offer_id + "/seller/").value.toString()
+                    mDatasetIDs[index] = offer_id
+                    mDatasetISBNs[index] = dataSnapshot.child("/" + offer_id + "/isbn/").value.toString()
 
                     index++
                 }
@@ -151,7 +170,9 @@ class MyOffersFragment : Fragment() {
                     mDatasetTitle,
                     mDatasetAuthor,
                     mDatasetPrice,
-                    mDatasetSeller
+                    mDatasetSeller,
+                    mDatasetIDs,
+                    mDatasetISBNs
                 )
                 mRecyclerView.adapter = mAdapter
             }

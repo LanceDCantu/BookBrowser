@@ -19,7 +19,8 @@ class CustomOffersAdapter
 //Initialize the dataset of the Adapter.
 
     (private val mDataSetTitle: Array<String?>, private val mDataSetAuthor: Array<String?>,
-     private val mDataSetPrice: Array<String?>, private val mDataSetSeller: Array<String?>) :
+     private val mDataSetPrice: Array<String?>, private val mDataSetSeller: Array<String?>,
+     private val mDataSetIDs: Array<String?>,private val mDataSetISBNs: Array<String?>) :
     RecyclerView.Adapter<CustomOffersAdapter.ViewHolder>() {
 
     //Provide a reference to the type of views that you are using (custom ViewHolder)
@@ -28,13 +29,15 @@ class CustomOffersAdapter
         var bookAuthorTextView: TextView = v.findViewById<View>(R.id.book_author) as TextView
         var bookPriceTextView: TextView = v.findViewById<View>(R.id.book_price) as TextView
         var bookSellerTextView: TextView = v.findViewById<View>(R.id.book_seller) as TextView
+        var bookIDTextView: TextView = v.findViewById<View>(R.id.market_id) as TextView
+        var bookISBNTextView: TextView = v.findViewById<View>(R.id.book_isbn) as TextView
 
         init {
             v.setOnClickListener(this)
         }
 
         override fun onClick(view: View) {
-            CustomOffersAdapter.clickListener!!.onItemClick(getAdapterPosition(), view)
+            clickListener!!.onItemClick(getAdapterPosition(), view)
 
             //val intent = Intent(view.context, BookInfoMarket::class.java)
             //startActivity(intent)
@@ -58,6 +61,8 @@ class CustomOffersAdapter
         viewHolder.bookAuthorTextView.text = mDataSetAuthor[position]
         viewHolder.bookPriceTextView.text = mDataSetPrice[position]
         viewHolder.bookSellerTextView.text = mDataSetSeller[position]
+        viewHolder.bookIDTextView.text = mDataSetIDs[position]
+        viewHolder.bookISBNTextView.text = mDataSetISBNs[position]
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 

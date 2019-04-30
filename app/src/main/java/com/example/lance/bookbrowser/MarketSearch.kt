@@ -6,21 +6,22 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
 import com.algolia.instantsearch.core.helpers.Searcher
 import com.algolia.instantsearch.ui.helpers.InstantSearch
 import com.algolia.instantsearch.ui.utils.ItemClickSupport
 import com.example.lance.bookbrowser.Cart.Cart
-import kotlinx.android.synthetic.main.activity_main_search.*
+import com.example.lance.bookbrowser.StoreLocater.StoreLocater
 import kotlinx.android.synthetic.main.activity_market_search.*
 import kotlinx.android.synthetic.main.product_item_market.view.*
+import com.example.lance.bookbrowser.UserData
 
 
 class MarketSearchActivity : AppCompatActivity() {
 
     lateinit var searcher: Searcher
     lateinit var helper: InstantSearch
+
+    val myUser = UserData.getData()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -75,6 +76,7 @@ class MarketSearchActivity : AppCompatActivity() {
                 val intent = Intent(this@MarketSearchActivity, BookInfoMarket::class.java)
                 intent.putExtra("book_isbn", isbn_clicked)
                 intent.putExtra("market_id", market_id_clicked)
+                intent.putExtra("owner", myUser)
                 startActivity(intent)
             }
         })

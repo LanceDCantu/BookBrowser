@@ -1,5 +1,6 @@
 package com.example.lance.bookbrowser.Cart
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.lance.bookbrowser.BookInfoStore
 import com.example.lance.bookbrowser.MyInterests.MyInterestsFragment
 import com.example.lance.bookbrowser.R
 import com.google.firebase.database.DataSnapshot
@@ -16,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.example.lance.bookbrowser.Cart.CustomCartAdapter.ClickListener
 import com.example.lance.bookbrowser.UserData
+import kotlinx.android.synthetic.main.activity_main_search.*
+import kotlinx.android.synthetic.main.product_item.view.*
 
 class CartFragment : Fragment() {
 
@@ -33,6 +37,7 @@ class CartFragment : Fragment() {
     var mDatasetAuthor: Array<String?> = arrayOfNulls(0)
     var mDatasetPrice: Array<String?> = arrayOfNulls(0)
     var mDatasetStore: Array<String?> = arrayOfNulls(0)
+    var mDatasetIsbn: Array<String?> = arrayOfNulls(0)
 
     var mCartMonValues : DoubleArray = doubleArrayOf(0.0, 0.0, 0.0, 0.0)
 
@@ -68,7 +73,8 @@ class CartFragment : Fragment() {
             mDatasetTitle,
             mDatasetAuthor,
             mDatasetPrice,
-            mDatasetStore
+            mDatasetStore,
+            mDatasetIsbn
         )
 
         // Set CustomAdapter as the adapter for RecyclerView.
@@ -77,6 +83,12 @@ class CartFragment : Fragment() {
 
         mAdapter.setOnItemClickListener(object : CustomCartAdapter.ClickListener {
             override fun onItemClick(position: Int, v: View) {
+                var isbn = v.book_isbn.text
+
+                val intent = Intent(activity, BookInfoStore::class.java)
+                intent.putExtra("book_isbn", isbn)
+                startActivity(intent)
+
                 Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
             }
         })
@@ -102,6 +114,8 @@ class CartFragment : Fragment() {
                 mDatasetAuthor = arrayOfNulls(size)
                 mDatasetPrice = arrayOfNulls(size)
                 mDatasetStore = arrayOfNulls(size)
+                mDatasetIsbn = arrayOfNulls(size)
+
 
                 var index : Int = 0
 
@@ -111,6 +125,7 @@ class CartFragment : Fragment() {
                     mDatasetAuthor[index] = cart_item_snap.child("/author/").value.toString()
                     mDatasetPrice[index] = cart_item_snap.child("/price/").value.toString()
                     mDatasetStore[index] = cart_item_snap.child("/store/").value.toString()
+                    mDatasetIsbn[index] = cart_item_snap.key.toString()
 
                     mCartMonValues[0] += cart_item_snap.child("/price/").value as Double
 
@@ -124,7 +139,8 @@ class CartFragment : Fragment() {
                     mDatasetTitle,
                     mDatasetAuthor,
                     mDatasetPrice,
-                    mDatasetStore
+                    mDatasetStore,
+                    mDatasetIsbn
                 )
                 mRecyclerView.adapter = mAdapter
 

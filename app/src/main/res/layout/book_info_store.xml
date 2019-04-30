@@ -37,10 +37,10 @@
                 <ImageView
                         android:id="@+id/imageView2"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="245dp"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="45dp"
-                        android:layout_marginBottom="45dp"
+                        android:layout_marginTop="35dp"
+                        android:layout_marginBottom="10dp"
                         app:srcCompat="@drawable/baseline_book_24"
                         tools:src="@drawable/baseline_book_24" />
 
@@ -149,7 +149,7 @@
                         android:layout_marginBottom="5dp"
                 />
 
-                
+
                 <WebView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -157,7 +157,6 @@
                 />
 
             </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.BottomNavigationView

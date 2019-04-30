@@ -5,17 +5,19 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.lance.bookbrowser.*
 import com.example.lance.bookbrowser.Cart.Cart
 import com.example.lance.bookbrowser.MyInterests.MyOffersFragment
+import com.example.lance.bookbrowser.StoreLocater.StoreLocater
 import kotlinx.android.synthetic.main.activity_my_offers.*
-import kotlinx.android.synthetic.main.activity_store_locater.*
+import com.example.lance.bookbrowser.UserData
 
 
 class MyOffers : AppCompatActivity() {
+
+    val myUser = UserData.getData()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -71,19 +73,6 @@ class MyOffers : AppCompatActivity() {
         // set on-click listener
         add_button.setOnClickListener {
             val intent = Intent(this, AddOffer::class.java)
-            startActivity(intent)
-        }
-
-
-        val offer_button = findViewById<Button>(R.id.book_button_offers)
-
-        // set on-click listener
-        offer_button.setOnClickListener {
-            Toast.makeText(this, "Book Clicked!", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, BookInfoMarket::class.java)
-            intent.putExtra("book_isbn", "9789402306538")
-            intent.putExtra("market_id", "-L_6dO9oK5DLIC4ZVzcX")
-            intent.putExtra("is_owner", true)
             startActivity(intent)
         }
     }
