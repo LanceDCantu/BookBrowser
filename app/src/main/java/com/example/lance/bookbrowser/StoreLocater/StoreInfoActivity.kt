@@ -1,22 +1,18 @@
-package com.example.lance.bookbrowser
+package com.example.lance.bookbrowser.StoreLocater
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import com.example.lance.bookbrowser.Cart.Cart
+import com.example.lance.bookbrowser.MainSearchActivity
+import com.example.lance.bookbrowser.MarketDirectory
+import com.example.lance.bookbrowser.MyAccount
+import com.example.lance.bookbrowser.R
+import com.example.lance.bookbrowser.R.id.navigation_store_info
+import kotlinx.android.synthetic.main.activity_store_info.*
 
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_store_locater.*
-
-class StoreLocater : AppCompatActivity(), OnMapReadyCallback {
-
-    private lateinit var mMap: GoogleMap
+class StoreInfoActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -51,28 +47,16 @@ class StoreLocater : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_store_locater)
+        setContentView(R.layout.activity_store_info)
 
-        navigation_stores.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation_store_info.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_stores)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_store_info)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         bottomNavigation.getMenu().findItem(R.id.navigation_stores).setChecked(true)
 
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        //val sydney = LatLng(-34.0, 151.0)
-        val reno = LatLng(39.5296, -119.8138)
-        val grass_roots = LatLng(39.5003359, -119.7868823)
-        mMap.addMarker(MarkerOptions().position(grass_roots).title("Grassroots Books"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(reno, 12.0f))
+        //Look in to the automatic calling functionality
+        //Look into clicking the website link and going directly
     }
 }

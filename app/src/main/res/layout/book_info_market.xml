@@ -41,11 +41,10 @@
             <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:contentDescription="Book Picture"
+                    android:layout_height="245dp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="45dp"
-                    android:layout_marginBottom="45dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="10dp"
                     app:srcCompat="@drawable/baseline_book_24"
                     tools:src="@drawable/baseline_book_24" />
 
@@ -95,6 +94,50 @@
                         android:text="Add to My Interests"
                         android:textAllCaps="false"/>
             </LinearLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"
+                    android:layout_marginBottom="5dp"
+            />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seller_notes"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="10dp"/>
+
+            <TextView
+                    android:id="@+id/book_notes_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description: There is no notes for this book"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="10dp"/>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"
+                    android:layout_marginBottom="5dp"
+            />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/details"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="10dp"/>
+
+            <TextView
+                    android:id="@+id/book_description_text_market"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description: There is no description available for this book"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="10dp"/>
 
 
         </LinearLayout>

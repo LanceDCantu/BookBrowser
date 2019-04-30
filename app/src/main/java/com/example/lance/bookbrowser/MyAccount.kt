@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.lance.bookbrowser.Cart.Cart
+import com.example.lance.bookbrowser.StoreLocater.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -63,6 +66,14 @@ class MyAccount : AppCompatActivity() {
         bottomNavigation.getMenu().findItem(R.id.navigation_account).setChecked(true)
 
         initUserData()
+
+        val change_picture = findViewById<TextView>(R.id.change_picture)
+
+        //Wait for the user to change their picture
+        change_picture.setOnClickListener {
+            //go to the add a picture situation
+            Toast.makeText(this@MyAccount, "Picture Addition", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initUserData()
@@ -72,10 +83,10 @@ class MyAccount : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot)
             {
                 //write method to extract data in a User object
-                user.picture = dataSnapshot.child("/user_info/picture/").value.toString()
-                user.successful_sales = dataSnapshot.child("/user_info/successful_sales/").value.toString()
-                user.thumbs_up = dataSnapshot.child("/user_info/thumbs_up/").value.toString()
-                user.thumbs_down = dataSnapshot.child("/user_info/thumbs_down/").value.toString()
+                user.picture = dataSnapshot.child("/picture/").value.toString()
+                user.successful_sales = dataSnapshot.child("/successful_sales/").value.toString()
+                user.thumbs_up = dataSnapshot.child("/thumbs_up/").value.toString()
+                user.thumbs_down = dataSnapshot.child("/thumbs_down/").value.toString()
 
                 val email_TextView: TextView = findViewById(R.id.email_text_input)
                 email_TextView.text = dataSnapshot.key!!.replace('!','.',true)
@@ -89,8 +100,18 @@ class MyAccount : AppCompatActivity() {
                 val thumbsdown_TextView: TextView = findViewById(R.id.thumbs_down_text)
                 thumbsdown_TextView.text = user.thumbs_down.toString()
 
-                //var profile_pic_view : ImageView = findViewById(R.id.profile_pic_view)
-                //GlideApp.with(this@MyAccount).load(storageRef).into(profile_pic_view)
+                //If a picture exists for the user
+                if(user.picture != "")
+                {
+                    //Retrieve the picture from the Firestore via the email as the file name
+                    //var profile_pic_view : ImageView = findViewById(R.id.profile_pic_view)
+                    //GlideApp.with(this@MyAccount).load(storageRef).into(profile_pic_view)
+                }
+                else
+                {
+                    val change_picture = findViewById<TextView>(R.id.change_picture)
+                    change_picture.text = "Add"
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError)

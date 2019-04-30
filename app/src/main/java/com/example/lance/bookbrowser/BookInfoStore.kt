@@ -1,26 +1,21 @@
 package com.example.lance.bookbrowser
 
 import android.content.Intent
-import android.icu.util.Calendar
 import android.os.Bundle
+import com.example.lance.bookbrowser.UserData
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.example.lance.bookbrowser.Cart.Cart
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 import com.google.firebase.functions.FirebaseFunctions
-import kotlinx.android.synthetic.main.activity_store_locater.*
 import kotlinx.android.synthetic.main.book_info_store.*
-import java.text.SimpleDateFormat
-import com.google.firebase.functions.HttpsCallableResult
-import android.support.annotation.NonNull
 import android.text.Html
 import android.webkit.WebView
 import com.bumptech.glide.Glide
-import com.google.android.gms.tasks.Continuation
+import com.example.lance.bookbrowser.StoreLocater.StoreLocater
 
 
 class BookInfoStore : AppCompatActivity() {
@@ -30,8 +25,11 @@ class BookInfoStore : AppCompatActivity() {
 
     private lateinit var book_info: Book
 
+    private var book_in_cart: Boolean = false
+
     val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     val product_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e.firebaseio.com").reference
+    val myUser = UserData.getData()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -125,6 +123,8 @@ class BookInfoStore : AppCompatActivity() {
         // get reference to button
         val add_to_cart_button = findViewById<Button>(R.id.add_to_cart)
 
+        checkCartStatus(isbn)
+
         // set on-click listener
         add_to_cart_button.setOnClickListener {
             val myUser = UserData.getData()
@@ -136,13 +136,28 @@ class BookInfoStore : AppCompatActivity() {
             sending_book.price = book_info.price
             sending_book.store = spinner.getSelectedItem().toString()
 
-            if (spinner.getSelectedItem().toString() == "Select Store") {
+
+            if(add_to_cart_button.text == "Remove from Cart")
+            {
+                val pushRef: DatabaseReference = users_ref.child(("$myUser") + "/" + "cart/" + book_info.isbn + "/")
+
+                pushRef.setValue(null)
+
+                Toast.makeText(this@BookInfoStore, "Removed from Cart", Toast.LENGTH_LONG).show()
+                //remove the book from the cart
+                add_to_cart_button.text = "Add to Cart"
+            }
+            else if (spinner.getSelectedItem().toString() == "Select Store") {
                 Toast.makeText(this@BookInfoStore, "Please Select a Store", Toast.LENGTH_SHORT).show()
-            } else {
-                var pushRef: DatabaseReference =
+            }
+            else if(add_to_cart_button.text == "Add to Cart")
+            {
+                val pushRef: DatabaseReference =
                     users_ref.child(("$myUser") + "/" + "cart/" + book_info.isbn + "/")
 
                 pushRef.setValue(sending_book)
+
+                add_to_cart_button.text = "Remove from Cart"
 
                 Toast.makeText(this@BookInfoStore, "Added to Cart", Toast.LENGTH_LONG).show()
             }
@@ -163,7 +178,7 @@ class BookInfoStore : AppCompatActivity() {
                 title_textView.text = dataSnapshot.child("/title/").value.toString()
                 author_textView.text = dataSnapshot.child("/authors/").children.elementAt(0).value.toString()
                 price_textView.text = "$2.14"
-                isbn_textView.text = dataSnapshot.key
+                isbn_textView.text = "ISBN: " + dataSnapshot.key
 
                 if (dataSnapshot.child("/longDescription/").value.toString() != "null") {
                     description_textView.text =
@@ -183,6 +198,30 @@ class BookInfoStore : AppCompatActivity() {
         }
         product_ref.child("products/" + isbn + "/").addListenerForSingleValueEvent(userListener)
     }
+
+    private fun checkCartStatus(isbn: String){
+        val userListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (cart_item_snap in dataSnapshot.children)
+                {
+                    book_in_cart = false
+
+                    if(cart_item_snap.key == isbn)
+                    {
+                        book_in_cart = true
+                        val add_to_cart_button = findViewById<Button>(R.id.add_to_cart)
+                        add_to_cart_button.text = "Remove from Cart"
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                println("loadPost:onCancelled ${databaseError.toException()}")
+            }
+
+        }
+        users_ref.child(myUser + "/cart/").addListenerForSingleValueEvent(userListener)
+}
 
     private fun initializeBottomNavigation() {
         navigation_book_store.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)

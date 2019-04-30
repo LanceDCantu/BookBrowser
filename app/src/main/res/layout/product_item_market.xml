@@ -5,25 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:clickable="true">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/book"
             android:layout_width="match_parent"
-            android:layout_height="98dp">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginStart="128dp"
                 app:layout_constraintStart_toStartOf="parent">
                 <TextView
                     android:id="@+id/book_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:text="title"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
@@ -55,7 +56,13 @@
                     android:text="seller"
                     android:textSize="12sp"
                     algolia:attribute='@{"seller"}'/>
-
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintStart_toStartOf="parent">
                 <TextView
                         android:id="@+id/market_id"
                         android:layout_width="wrap_content"
@@ -63,6 +70,7 @@
                         android:text="err"
                         android:textSize="12sp"
                         android:layout_marginTop="10dp"
+                        android:visibility="invisible"
                         algolia:attribute='@{"market_id"}'/>
 
                 <TextView
@@ -72,19 +80,9 @@
                         android:text="err"
                         android:textSize="12sp"
                         android:layout_marginTop="10dp"
+                        android:visibility="invisible"
                         algolia:attribute='@{"isbn"}'/>
             </LinearLayout>
-            <ImageView
-                android:layout_width="123dp"
-                android:layout_height="95dp"
-                android:layout_gravity="start"
-                android:id="@+id/book_picture"
-                android:contentDescription="@string/book_title"
-                app:srcCompat="@drawable/baseline_book_24"
-                tools:src="@drawable/baseline_book_24"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="4dp"/>
-
         </android.support.constraint.ConstraintLayout>
 
         <View

@@ -1,17 +1,20 @@
-package com.example.lance.bookbrowser
+package com.example.lance.bookbrowser.Messager
 
 import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
-import android.widget.Button
 import com.example.lance.bookbrowser.Cart.Cart
-import com.example.lance.bookbrowser.MyInterests.MyInterests
-import com.example.lance.bookbrowser.MyOffers.MyOffers
+import com.example.lance.bookbrowser.MainSearchActivity
+import com.example.lance.bookbrowser.MarketDirectory
+import com.example.lance.bookbrowser.MyAccount
+import com.example.lance.bookbrowser.R
 import com.example.lance.bookbrowser.StoreLocater.StoreLocater
-import kotlinx.android.synthetic.main.market_directory.*
+import kotlinx.android.synthetic.main.activity_messaging.*
 
-class MarketDirectory : AppCompatActivity() {
+class MessagingActivity : AppCompatActivity() {
+
+    lateinit var market_id: String
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -46,41 +49,27 @@ class MarketDirectory : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.market_directory)
+        setContentView(R.layout.activity_messaging)
 
-        navigation_market_directory.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        market_id = intent.getStringExtra("id")
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_market_directory)
+        message_activity_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.message_activity_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         bottomNavigation.getMenu().findItem(R.id.navigation_user_market).setChecked(true)
 
-        initButtons()
-    }
-
-    private fun initButtons() {
-        val explore_button = findViewById<Button>(R.id.explore_button)
-        val my_interests_button = findViewById<Button>(R.id.my_interests_button)
-        val my_offers_button = findViewById<Button>(R.id.my_offers_button)
-
-        // set on-click listener
-        explore_button.setOnClickListener {
-            val intent = Intent(this, MarketSearchActivity::class.java)
-            startActivity(intent)
+        if (savedInstanceState == null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            val fragment = MessageFragment()
+            val args = Bundle()
+            args.putString("id", market_id)
+            fragment.arguments = args
+            transaction.replace(R.id.sample_content_fragment, fragment)
+            transaction.commit()
         }
 
-        // set on-click listener
-        my_interests_button.setOnClickListener {
-            val intent = Intent(this, MyInterests::class.java)
-            startActivity(intent)
-        }
-
-        // set on-click listener
-        my_offers_button.setOnClickListener {
-            val intent = Intent(this, MyOffers::class.java)
-            startActivity(intent)
-        }
+        //we need to totally revamp this as a recycler view
     }
 }
-
-
