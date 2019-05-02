@@ -98,8 +98,8 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
                 {
                     val username = myUser?.substringBefore("@")
                     //println("$username")
-                    var sending_order =
-                        Order("none", "none", 0.0, "none", "$username", mutableListOf())
+                    var sending_order = Order("none", "none", 0.0, "none", "$username", mutableListOf())
+
                     var temp_book = Book("none", "none", "none", 0.0, "none")
 
                     val date = Calendar.getInstance().time
@@ -117,7 +117,8 @@ class Cart :  AppCompatActivity(), CartFragment.OnCartEntryListener {
                         temp_book.price = cart_item_snap.child("/price/").value as Double
                         temp_book.store = cart_item_snap.child("/store/").value.toString()
 
-                        sending_order.books.add(temp_book)
+                        //sending_order.books.add(temp_book)
+                        sending_order.books.add(temp_book.copy())
 
                         sending_order.store = temp_book.store//Note this assumes all the books are from the same place
                         sending_order.total += temp_book.price

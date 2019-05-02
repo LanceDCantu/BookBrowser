@@ -1,30 +1,21 @@
-package com.example.lance.bookbrowser.OrderHistory
+package com.example.lance.bookbrowser.SellerCustomerChooser
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.icu.util.Calendar
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import com.example.lance.bookbrowser.*
 import com.example.lance.bookbrowser.Cart.Cart
-import com.example.lance.bookbrowser.StoreLocater.*
+import com.example.lance.bookbrowser.MainSearchActivity
+import com.example.lance.bookbrowser.MarketDirectory
+import com.example.lance.bookbrowser.MyAccount
 import com.example.lance.bookbrowser.R
-import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_cart.*
-import kotlinx.android.synthetic.main.activity_order_history.*
-import java.text.SimpleDateFormat
+import com.example.lance.bookbrowser.StoreLocater.StoreLocater
+import kotlinx.android.synthetic.main.activity_messaging.*
+import kotlinx.android.synthetic.main.activity_seller_customer_chooser.*
 
+class SellerCustomerChooserActivity : AppCompatActivity() {
 
-class OrderHistory :  AppCompatActivity() {
-
-    val users_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
-    val orders_ref = FirebaseDatabase.getInstance("https://bookbrowser-9108e-orders.firebaseio.com").reference
-    val myUser = UserData.getData()
-
+    lateinit var market_id: String
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -59,26 +50,25 @@ class OrderHistory :  AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order_history)
+        setContentView(R.layout.activity_seller_customer_chooser)
 
-        navigation_order_history.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        market_id = intent.getStringExtra("id")
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_order_history)
+        chooser_activity_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.chooser_activity_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        bottomNavigation.getMenu().findItem(R.id.navigation_account).setChecked(true)
+        bottomNavigation.getMenu().findItem(R.id.navigation_user_market).setChecked(true)
 
         if (savedInstanceState == null) {
             val transaction = supportFragmentManager.beginTransaction()
-            val fragment = OrderHistoryFragment()
-            transaction.replace(R.id.sample_content_fragment_history, fragment)
+            val fragment = SellerCustomerChooserFragment()
+            val args = Bundle()
+            args.putString("id", market_id)
+            fragment.arguments = args
+            transaction.replace(R.id.sample_content_fragment, fragment)
             transaction.commit()
         }
     }
 }
-
-
-
-
-
-

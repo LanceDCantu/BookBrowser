@@ -90,7 +90,7 @@ class MyMessaging : AppCompatActivity() {
 
                 val message = dataSnapshot.getValue<Message>(Message::class.java)
 
-              //  messagesList.plus(message)
+                //  messagesList.plus(message)
 
                 var current = messages.text.toString()
                 current += '\n'
@@ -99,30 +99,22 @@ class MyMessaging : AppCompatActivity() {
 
             }
         }
-      /*  val messageListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
+        /*  val messageListener = object : ValueEventListener {
+              override fun onDataChange(dataSnapshot: DataSnapshot) {
+                 dataSnapshot.children.mapNotNullTo(messagesList){
+                     it.getValue<Message>(Message::class.java)
+                 }
+                  messagesList.forEach{
+                      println("message: " + it?.data)
+                  }
+              }
+              override fun onCancelled(databaseError: DatabaseError) {
+                  println("loadPost:onCancelled ${databaseError.toException()}")
+              }
+          }
+  */
 
-               dataSnapshot.children.mapNotNullTo(messagesList){
-                   it.getValue<Message>(Message::class.java)
-               }
-                messagesList.forEach{
-                    println("message: " + it?.data)
-                }
-
-
-
-            }
-
-
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                println("loadPost:onCancelled ${databaseError.toException()}")
-            }
-        }
-
-*/
-
-   //     messages_ref.addListenerForSingleValueEvent(messageListener)
+        //     messages_ref.addListenerForSingleValueEvent(messageListener)
         messages_ref.addChildEventListener(childListener)
 
 
@@ -146,7 +138,7 @@ class MyMessaging : AppCompatActivity() {
         }
     }
 
-   // private val messagesList : MutableList<Message> = mutableListOf()
+    // private val messagesList : MutableList<Message> = mutableListOf()
 
     companion object {
 

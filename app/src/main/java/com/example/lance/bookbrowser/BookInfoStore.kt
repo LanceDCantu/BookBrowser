@@ -2,7 +2,6 @@ package com.example.lance.bookbrowser
 
 import android.content.Intent
 import android.os.Bundle
-import com.example.lance.bookbrowser.UserData
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.*
@@ -94,6 +93,8 @@ class BookInfoStore : AppCompatActivity() {
 
                 val url = task.getResult()?.get("bookImageURL") as String
                 val imageView = findViewById<ImageView>(R.id.imageView2)
+
+                applicationContext
                 Glide.with(this@BookInfoStore).load(url).into(imageView)
 
                 val description = task.getResult()?.get("description") as String

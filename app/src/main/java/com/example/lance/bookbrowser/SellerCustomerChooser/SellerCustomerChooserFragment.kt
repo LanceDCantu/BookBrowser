@@ -1,5 +1,6 @@
-package com.example.lance.bookbrowser.Messager
+package com.example.lance.bookbrowser.SellerCustomerChooser
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -13,16 +14,17 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.example.lance.bookbrowser.Message
+import com.example.lance.bookbrowser.Messager.MessagingActivity
 import com.example.lance.bookbrowser.UserData
+import kotlinx.android.synthetic.main.customer_item.view.*
 
-class MessageFragment : Fragment() {
+class SellerCustomerChooserFragment : Fragment() {
 
-    val users = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
+    //val users = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
     val market = FirebaseDatabase.getInstance("https://bookbrowser-9108e-market.firebaseio.com").reference
     val myUser = UserData.getData()
 
     var market_id: String = "null"
-    var snapshotDir: String = "null"
 
     enum class LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -31,31 +33,17 @@ class MessageFragment : Fragment() {
 
     lateinit var mCurrentLayoutManagerType: LayoutManagerType
 
-    var mDatasetMessageText: Array<String?> = arrayOfNulls(0)
-    var mDatasetMessageSender: Array<Boolean?> = arrayOfNulls(0)
+    var mDatasetBuyers: Array<String?> = arrayOfNulls(0)
 
     lateinit var mRecyclerView: RecyclerView
-    lateinit var mAdapter: CustomMessageAdapter
+    lateinit var mAdapter: CustomSellerCustomerChooserAdapter
     lateinit var mLayoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val args = arguments
-        val market_id = args!!.getString("id")
-        val buyer:String? = args.getString("buyer")
-
-        //we need to use the name of the buyer if we are the one selling the book. This is be dependant on what activity we are coming from
-        if(buyer != null && buyer != "")
-        {
-            //then we are the seller
-            snapshotDir = market_id + "/conversations/" + buyer + "/"
-        }
-        else
-        {
-            //then we are the buyer
-            snapshotDir = market_id + "/conversations/" + buyer + "/"
-        }
+        market_id = args!!.getString("id")
 
         initDataset()
     }
@@ -64,29 +52,36 @@ class MessageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.message_content, container, false)
+        val rootView = inflater.inflate(R.layout.seller_customer_chooser_content, container, false)
         rootView.setTag(TAG)
 
-        mRecyclerView = rootView.findViewById(R.id.messagesRecyclerView)
+        mRecyclerView = rootView.findViewById(R.id.sellerCustomerChooserRecyclerView)
 
         // LinearLayoutManager is used here, this will layout the elements in a similar fashion
         // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
         // elements are laid out.
-        mLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true)
+        mLayoutManager = LinearLayoutManager(activity)
         mRecyclerView.layoutManager = mLayoutManager
         mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER
 
-        mDatasetMessageText.reverse()
-        mDatasetMessageSender.reverse()
-
-        mAdapter = CustomMessageAdapter(
-            mDatasetMessageText,
-            mDatasetMessageSender
+        mAdapter = CustomSellerCustomerChooserAdapter(
+            mDatasetBuyers
         )
 
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         // END_INCLUDE(initializeRecyclerView)
+
+        mAdapter.setOnItemClickListener(object : CustomSellerCustomerChooserAdapter.ClickListener {
+            override fun onItemClick(position: Int, v: View) {
+                var buyer_name = v.buyer_text.text
+
+                val intent = Intent(activity, MessagingActivity::class.java)
+                intent.putExtra("id", market_id)
+                intent.putExtra("buyer", buyer_name)
+                startActivity(intent)
+            }
+        })
 
         return rootView
     }
@@ -104,39 +99,30 @@ class MessageFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot)
             {
                 val size : Int = dataSnapshot.childrenCount.toInt()
-                mDatasetMessageText = arrayOfNulls(size)
-                mDatasetMessageSender = arrayOfNulls(size)
+                mDatasetBuyers = arrayOfNulls(size)
 
                 var index = 0
 
-                for (message_snap in dataSnapshot.children)
+                for (buyer_snap in dataSnapshot.children)
                 {
-                    //Read the message and possibly store display mode
-                    mDatasetMessageText[index] = message_snap.child("/data/").value.toString()
-                    mDatasetMessageSender[index] = message_snap.child("/sender/").value as Boolean
+                    mDatasetBuyers[index] = buyer_snap.key.toString()
 
                     index++
                 }
 
-                mDatasetMessageText.reverse()
-                mDatasetMessageSender.reverse()
-
                 mAdapter.notifyDataSetChanged()
-                mAdapter = CustomMessageAdapter(
-                    mDatasetMessageText,
-                    mDatasetMessageSender
+                mAdapter = CustomSellerCustomerChooserAdapter(
+                    mDatasetBuyers
                 )
 
                 mRecyclerView.adapter = mAdapter
-
-                mRecyclerView.scrollToPosition(size - 1)
             }
             override fun onCancelled(databaseError: DatabaseError)
             {
                 println("loadPost:onCancelled ${databaseError.toException()}")
             }
         }
-        market.child(snapshotDir).addValueEventListener(menuListener)
+        market.child(market_id + "/conversations/").addValueEventListener(menuListener)
     }
 
     companion object {

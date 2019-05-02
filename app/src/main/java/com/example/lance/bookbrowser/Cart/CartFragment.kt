@@ -10,15 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.lance.bookbrowser.BookInfoStore
-import com.example.lance.bookbrowser.MyInterests.MyInterestsFragment
 import com.example.lance.bookbrowser.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.example.lance.bookbrowser.Cart.CustomCartAdapter.ClickListener
 import com.example.lance.bookbrowser.UserData
-import kotlinx.android.synthetic.main.activity_main_search.*
 import kotlinx.android.synthetic.main.product_item.view.*
 
 class CartFragment : Fragment() {

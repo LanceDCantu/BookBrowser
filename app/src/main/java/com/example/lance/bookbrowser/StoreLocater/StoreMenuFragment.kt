@@ -8,15 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.example.lance.bookbrowser.BookInfoStore
-import com.example.lance.bookbrowser.MyInterests.MyInterestsFragment
 import com.example.lance.bookbrowser.R
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.example.lance.bookbrowser.Cart.CustomCartAdapter.ClickListener
+import kotlinx.android.synthetic.main.store_item.view.*
 
 class StoreMenuFragment : Fragment() {
 
@@ -69,10 +62,24 @@ class StoreMenuFragment : Fragment() {
         mAdapter.setOnItemClickListener(object : CustomStoreMenuAdapter.ClickListener {
             override fun onItemClick(position: Int, v: View) {
                 //Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
-
-                //Go into the store info activity to show full data
-                val intent = Intent(activity, StoreInfoActivity::class.java)
-                startActivity(intent)
+                if(v.store_name.text == "Grassroots Books")
+                {
+                    //Go into the store info activity to show full data
+                    val intent = Intent(activity, StoreInfoActivity::class.java)
+                    startActivity(intent)
+                }
+                else if(v.store_name.text == "Sundance Books")
+                {
+                    //Go into the store info activity to show full data
+                    val intent = Intent(activity, StoreInfoActivitySundance::class.java)
+                    startActivity(intent)
+                }
+                else if (v.store_name.text == "Book Gallery Reno")
+                {
+                    //Go into the store info activity to show full data
+                    val intent = Intent(activity, StoreInfoActivityBookGallery::class.java)
+                    startActivity(intent)
+                }
             }
         })
 

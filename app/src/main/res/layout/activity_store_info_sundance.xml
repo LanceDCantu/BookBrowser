@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/navigation_store_info"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            >
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
@@ -26,12 +27,12 @@
                       android:layout_height="wrap_content"
                       android:textSize="36sp"
                       android:textStyle="bold"
-                      android:text="Grassroots Books"/>
+                      android:text="Sundance Books"/>
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:textSize="18sp"
                       android:layout_marginBottom="10dp"
-                      android:text="Closes: 8:05PM Today"/>
+                      android:text="Closes: 9PM Today"/>
 
             <View
                     android:layout_width="match_parent"
@@ -61,7 +62,7 @@
                           android:layout_marginBottom="5dp">
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:text="Phone: (775) 271-1161"/>
+                          android:text="Phone: (775) 786-1188"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                           android:layout_height="wrap_content"
                           android:layout_marginBottom="5dp"
                           android:textColor="#0000EE"
-                          android:text="https://www.grassrootsbooks.com/home/"/>
+                          android:text="https://www.sundancebookstore.com/"/>
             </LinearLayout>
 
 
@@ -141,37 +142,37 @@
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="9AM - 9PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="9AM - 9PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="9AM - 9PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="9AM - 9PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="9AM - 9PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="9AM - 5PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="9AM - 5PM"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -202,9 +203,7 @@
                       android:layout_height="wrap_content"
                       android:textSize="18sp"
                       android:layout_marginBottom="15dp"
-                      android:text="Grassroots Books started out in a garage near Seattle in 2003 with a box of books and a mom who wanted to spend more time with her kids. But, it rains too much in Seattle…
-
-Fast forward a decade: We’re in Reno and home to a selection of 40,000+ books. And home-away-from home for 40 employees and a fast-growing fan base."/>
+                      android:text="Sundance Books and Music has been dedicated to supporting and enriching Northern Nevada's literary and musical landscape for over 30 years. Thanks to a partnership with Nevada Humanities, and often with support from the Nightingale Family Foundation, we regularly host readings, book signings, salons, and other literary and musical events throughout the year.  "/>
     </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

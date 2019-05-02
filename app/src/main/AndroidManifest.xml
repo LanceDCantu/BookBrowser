@@ -35,37 +35,42 @@
         </activity>
         <activity
                 android:name=".BookInfoStore"
-                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".BookInfoMarket"
                 android:label="@string/explore"
-                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".MyAccount"
                 android:label="@string/my_account"
-                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".StoreLocater.StoreLocater"
                 android:label="@string/find_stores"
-                android:noHistory="true"
+
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".StoreLocater.StoreInfoActivity"
                 android:label="@string/find_stores"
-                android:noHistory="true"
+                android:theme="@style/AppTheme.NoAnimation">
+        </activity>
+        <activity
+                android:name=".StoreLocater.StoreInfoActivityBookGallery"
+                android:label="@string/find_stores"
+                android:theme="@style/AppTheme.NoAnimation">
+        </activity>
+        <activity
+                android:name=".StoreLocater.StoreInfoActivitySundance"
+                android:label="@string/find_stores"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".MainSearchActivity"
                 android:label="@string/app_name"
-                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme.NoAnimation">
@@ -83,7 +88,6 @@
         <activity
                 android:name=".Cart.Cart"
                 android:label="@string/title_activity_cart"
-                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
@@ -92,8 +96,15 @@
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
+                android:name=".OrderHistory.OrderHistory"
+                android:label="@string/title_activity_my_offers"
+                android:theme="@style/AppTheme.NoAnimation">
+        </activity>
+        <activity
                 android:name=".FireBaseLogin"
-                android:label="@string/title_activity_login">
+                android:label="Book Browser"
+                android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -107,7 +118,6 @@
         <activity
                 android:name=".MarketSearchActivity"
                 android:label="@string/explore"
-                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
@@ -138,9 +148,13 @@
                   android:theme="@style/AppTheme.NoAnimation" />
 
 
-        <activity android:name=".Messager.MessageListSeller">
+        <activity
+                android:name=".SellerCustomerChooser.SellerCustomerChooserActivity"
+                android:label="Buyer List">
         </activity>
-        <activity android:name=".Messager.MessagingActivity">
+        <activity
+                android:name=".Messager.MessagingActivity"
+                android:label="Messages">
         </activity>
     </application>
 

@@ -82,8 +82,7 @@ class MainSearchActivity : AppCompatActivity() {
 
         ItemClickSupport.addTo(hits).setOnItemClickListener(object : ItemClickSupport.OnItemClickListener {
             override fun onItemClick(recyclerView: RecyclerView, position: Int, v: View) {
-                var clicked_view : View = hits.getChildAt(position)
-                var isbn_clicked : String? = clicked_view.book_isbn.text.toString()
+                var isbn_clicked : String? = v.book_isbn.text.toString()
 
                 val intent = Intent(this@MainSearchActivity, BookInfoStore::class.java)
                 intent.putExtra("book_isbn", isbn_clicked)

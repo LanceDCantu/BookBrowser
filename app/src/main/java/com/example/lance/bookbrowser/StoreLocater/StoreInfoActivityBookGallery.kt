@@ -1,4 +1,4 @@
-package com.example.lance.bookbrowser.Messager
+package com.example.lance.bookbrowser.StoreLocater
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -9,10 +9,10 @@ import com.example.lance.bookbrowser.MainSearchActivity
 import com.example.lance.bookbrowser.MarketDirectory
 import com.example.lance.bookbrowser.MyAccount
 import com.example.lance.bookbrowser.R
-import com.example.lance.bookbrowser.StoreLocater.StoreLocater
-import kotlinx.android.synthetic.main.activity_message_list_seller.*
+import com.example.lance.bookbrowser.R.id.navigation_store_info
+import kotlinx.android.synthetic.main.activity_store_info.*
 
-class MessageListSeller : AppCompatActivity() {
+class StoreInfoActivityBookGallery : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -47,13 +47,16 @@ class MessageListSeller : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_message_list_seller)
+        setContentView(R.layout.activity_store_info_book_gallery)
 
-        message_list_seller_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation_store_info.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.message_list_seller_navigation)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.navigation_store_info)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        bottomNavigation.getMenu().findItem(R.id.navigation_user_market).setChecked(true)
-}
+        bottomNavigation.getMenu().findItem(R.id.navigation_stores).setChecked(true)
+
+        //Look in to the automatic calling functionality
+        //Look into clicking the website link and going directly
+    }
 }

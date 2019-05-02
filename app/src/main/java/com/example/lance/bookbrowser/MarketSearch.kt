@@ -69,9 +69,8 @@ class MarketSearchActivity : AppCompatActivity() {
 
         ItemClickSupport.addTo(market_hits).setOnItemClickListener(object : ItemClickSupport.OnItemClickListener {
             override fun onItemClick(recyclerView: RecyclerView, position: Int, v: View) {
-                var clicked_view : View = market_hits.getChildAt(position)
-                var isbn_clicked : String? = clicked_view.book_isbn.text.toString()
-                var market_id_clicked : String? = clicked_view.market_id.text.toString()
+                var isbn_clicked : String? = v.book_isbn.text.toString()
+                var market_id_clicked : String? = v.market_id.text.toString()
 
                 val intent = Intent(this@MarketSearchActivity, BookInfoMarket::class.java)
                 intent.putExtra("book_isbn", isbn_clicked)

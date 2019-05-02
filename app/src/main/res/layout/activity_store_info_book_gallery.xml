@@ -26,29 +26,18 @@
                       android:layout_height="wrap_content"
                       android:textSize="36sp"
                       android:textStyle="bold"
-                      android:text="Grassroots Books"/>
+                      android:text="Book Gallery Reno"/>
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:textSize="18sp"
                       android:layout_marginBottom="10dp"
-                      android:text="Closes: 8:05PM Today"/>
+                      android:text="Closes: 5:30PM Today"/>
 
             <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorGray"
                     android:layout_marginBottom="5dp"/>
-            <!--
-            <ImageView android:layout_width="300dp"
-                       android:layout_height="300dp"
-                       android:layout_gravity="center_horizontal"
-                       android:src="@drawable/baseline_book_24"/>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorGray"
-                    android:layout_marginBottom="10dp"/>
-                    -->
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -61,7 +50,7 @@
                           android:layout_marginBottom="5dp">
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:text="Phone: (775) 271-1161"/>
+                          android:text="Phone: (775) 356-8900"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
@@ -78,7 +67,7 @@
                           android:layout_height="wrap_content"
                           android:layout_marginBottom="5dp"
                           android:textColor="#0000EE"
-                          android:text="https://www.grassrootsbooks.com/home/"/>
+                          android:text="http://www.thebookgallerynv.com/"/>
             </LinearLayout>
 
 
@@ -141,37 +130,37 @@
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="10AM - 5:30PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="10AM - 5:30PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="10AM - 5:30PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="10AM - 5:30PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="10AM - 5:30PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="10AM - 5:30PM"/>
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textStyle="bold"
-                          android:text="9AM - 8:05PM"/>
+                          android:text="10AM - 5:30PM"/>
             </LinearLayout>
         </LinearLayout>
 

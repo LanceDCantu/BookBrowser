@@ -9,8 +9,8 @@ import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.lance.bookbrowser.Cart.Cart
-import com.example.lance.bookbrowser.Messager.MessageListSeller
 import com.example.lance.bookbrowser.Messager.MessagingActivity
+import com.example.lance.bookbrowser.SellerCustomerChooser.SellerCustomerChooserActivity
 import com.example.lance.bookbrowser.StoreLocater.StoreLocater
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -142,7 +142,7 @@ class BookInfoMarket : AppCompatActivity() {
         contact_buttons.setOnClickListener {
             if(contact_buttons.text == "View Messages")
             {
-                val intent = Intent(this, MessageListSeller::class.java)
+                val intent = Intent(this, SellerCustomerChooserActivity::class.java)
                 intent.putExtra("id", market_id)
                 startActivity(intent)
             }
@@ -150,6 +150,7 @@ class BookInfoMarket : AppCompatActivity() {
             {
                 val intent = Intent(this, MessagingActivity::class.java)
                 intent.putExtra("id", market_id)
+                intent.putExtra("buyer", "")
                 startActivity(intent)
             }
         }
