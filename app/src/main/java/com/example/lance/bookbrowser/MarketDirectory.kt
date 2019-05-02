@@ -81,13 +81,6 @@ class MarketDirectory : AppCompatActivity() {
             val intent = Intent(this, MyOffers::class.java)
             startActivity(intent)
         }
-
-        val my_messages_button = findViewById<Button>(R.id.my_messages_button)
-
-        my_messages_button.setOnClickListener{
-            val intent = Intent(this, MyMessaging::class.java)
-            startActivity(intent)
-        }
     }
 }
 

@@ -118,6 +118,7 @@ class AddOffer : AppCompatActivity() {
 
                 //get title and author store it
                 title = task.getResult()?.get("title") as String
+                //work on this
                 author = "Alexandre de Castro Alves"
 
                 var sending_temp = Temp("none", "none", "none","none", "none", "none")
