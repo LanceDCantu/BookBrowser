@@ -31,7 +31,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     private var mAuth: FirebaseAuth? = null
 
     val write_to_user = FirebaseDatabase.getInstance("https://bookbrowser-9108e-users.firebaseio.com").reference
-    var user : User = User ("none", "null", "null","null")
+    var user : User = User ("none", "0", "0","0")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,35 +88,14 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
                 pushRef.setValue(user)
 
-                //val intent = Intent(this@SignUpActivity, MyAccount::class.java)
-                //intent.putExtra("user_id", user_id)
                 val intent = Intent(this@SignUpActivity, MainSearchActivity::class.java)
                 startActivity(intent)
 
-                Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
-
-//                //Registration OK
-//                var intent = Intent(this, MainSearchActivity::class.java)
-//                startActivity(intent)
-//                Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
-//                //val firebaseUser = this.mAuth!!.currentUser!!
+                Toast.makeText(this, "Successfully Logged in!", Toast.LENGTH_LONG).show()
             } else {
-                //Registration error
-                Toast.makeText(this, "Error Logging in :(", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error Logging in.", Toast.LENGTH_SHORT).show()
             }
         }
-
-//        mAuth!!.signInWithEmailAndPassword(email, password).addOnCompleteListener ( this, OnCompleteListener<AuthResult> { task ->
-//            if(task.isSuccessful){
-//                var intent = Intent(this, AboutUs::class.java)
-//                startActivity(intent)
-//                Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
-//            }else{
-//                Toast.makeText(this, "Error Logging in :(", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-
     }
 
     override fun onClick(view: View) {

@@ -82,7 +82,6 @@ class MyAccount : AppCompatActivity() {
         //Wait for the user to change their picture
         change_picture.setOnClickListener {
             //go to the add a picture situation
-            Toast.makeText(this@MyAccount, "Picture Addition", Toast.LENGTH_SHORT).show()
         }
     }
 

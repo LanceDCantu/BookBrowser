@@ -93,9 +93,7 @@ class BookInfoStore : AppCompatActivity() {
 
                 val url = task.getResult()?.get("bookImageURL") as String
                 val imageView = findViewById<ImageView>(R.id.imageView2)
-
-                applicationContext
-                Glide.with(this@BookInfoStore).load(url).into(imageView)
+                Glide.with(applicationContext).load(url).into(imageView)
 
                 val description = task.getResult()?.get("description") as String
                 val descriptionView = findViewById<TextView>(R.id.book_description_text)

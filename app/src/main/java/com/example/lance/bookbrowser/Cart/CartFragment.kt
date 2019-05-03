@@ -85,8 +85,6 @@ class CartFragment : Fragment() {
                 val intent = Intent(activity, BookInfoStore::class.java)
                 intent.putExtra("book_isbn", isbn)
                 startActivity(intent)
-
-                Toast.makeText(activity, "we did it!", Toast.LENGTH_SHORT).show()
             }
         })
 

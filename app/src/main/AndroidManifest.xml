@@ -35,16 +35,23 @@
         </activity>
         <activity
                 android:name=".BookInfoStore"
+                android:noHistory="true"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".BookInfoMarket"
+                android:noHistory="true"
                 android:label="@string/explore"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".MyAccount"
                 android:label="@string/my_account"
+                android:theme="@style/AppTheme.NoAnimation">
+        </activity>
+        <activity
+                android:name=".UserAccount"
+                android:label="@string/user_account"
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
@@ -114,7 +121,8 @@
         </activity>
         <activity
                 android:name=".SignUpActivity"
-                android:label="@string/title_activity_create_account"/>
+                android:label="@string/title_activity_create_account"
+                android:theme="@style/AppTheme.NoActionBar"/>
         <activity
                 android:name=".MarketSearchActivity"
                 android:label="@string/explore"
@@ -143,18 +151,15 @@
                 android:theme="@style/AppTheme.NoAnimation">
         </activity>
 
-        <activity android:name=".messaging.MyMessaging"
-                  android:label="My Messaging"
-                  android:theme="@style/AppTheme.NoAnimation" />
-
-
         <activity
                 android:name=".SellerCustomerChooser.SellerCustomerChooserActivity"
-                android:label="Buyer List">
+                android:label="Buyer List"
+                android:theme="@style/AppTheme.NoAnimation">
         </activity>
         <activity
                 android:name=".Messager.MessagingActivity"
-                android:label="Messages">
+                android:label="Messages"
+                android:theme="@style/AppTheme.NoAnimation">
         </activity>
     </application>
 

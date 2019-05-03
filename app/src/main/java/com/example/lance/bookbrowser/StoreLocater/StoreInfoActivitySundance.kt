@@ -1,9 +1,12 @@
 package com.example.lance.bookbrowser.StoreLocater
 
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.view.View
+import android.widget.TextView
 import com.example.lance.bookbrowser.Cart.Cart
 import com.example.lance.bookbrowser.MainSearchActivity
 import com.example.lance.bookbrowser.MarketDirectory
@@ -55,6 +58,15 @@ class StoreInfoActivitySundance : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         bottomNavigation.getMenu().findItem(R.id.navigation_stores).setChecked(true)
+
+        val website_button = findViewById<TextView>(R.id.website_URL)
+
+        website_button.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(website_URL.text as String?))
+                startActivity(browserIntent)
+            }
+        })
 
         //Look in to the automatic calling functionality
         //Look into clicking the website link and going directly

@@ -27,13 +27,13 @@ class CustomOrderHistoryAdapter
         var bookTitleTextView: TextView = v.findViewById<View>(R.id.book_title) as TextView
         var bookAuthorTextView: TextView = v.findViewById<View>(R.id.book_author) as TextView
         var bookPriceTextView: TextView = v.findViewById<View>(R.id.book_price) as TextView
-        var bookStoreTextView: TextView = v.findViewById<View>(R.id.book_isbn) as TextView
+        var bookStoreTextView: TextView = v.findViewById<View>(R.id.book_store) as TextView
     }
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
-        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item, viewGroup, false)
+        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.product_item_order_history, viewGroup, false)
         return ViewHolder(v)
     }
 

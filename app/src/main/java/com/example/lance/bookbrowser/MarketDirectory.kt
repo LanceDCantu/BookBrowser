@@ -9,7 +9,6 @@ import com.example.lance.bookbrowser.Cart.Cart
 import com.example.lance.bookbrowser.MyInterests.MyInterests
 import com.example.lance.bookbrowser.MyOffers.MyOffers
 import com.example.lance.bookbrowser.StoreLocater.StoreLocater
-import com.example.lance.bookbrowser.messaging.MyMessaging
 import kotlinx.android.synthetic.main.market_directory.*
 
 class MarketDirectory : AppCompatActivity() {

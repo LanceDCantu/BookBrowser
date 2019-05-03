@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.view.View
+import android.webkit.WebView
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.lance.bookbrowser.Cart.Cart
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 import com.google.firebase.functions.FirebaseFunctions
 import kotlinx.android.synthetic.main.book_info_market.*
+import kotlinx.android.synthetic.main.book_info_market.view.*
 
 class BookInfoMarket : AppCompatActivity() {
 
@@ -94,11 +96,15 @@ class BookInfoMarket : AppCompatActivity() {
 
                 val url = task.getResult()?.get("bookImageURL") as String
                 val imageView = findViewById<ImageView>(R.id.imageView2)
-                Glide.with(this@BookInfoMarket).load(url).into(imageView)
+                Glide.with(applicationContext).load(url).into(imageView)
 
                 val description = task.getResult()?.get("description") as String
                 val descriptionView = findViewById<TextView>(R.id.book_description_text_market)
                 descriptionView.setText(Html.fromHtml("Description: \n" + description, Html.FROM_HTML_MODE_COMPACT))
+
+                val reviews = task.getResult()?.get("reviews") as String
+                val reviewsWebView = findViewById<WebView>(R.id.reviews_market)
+                reviewsWebView.loadData(reviews, "text/html", "utf-8" )
                 val result = task.result
                 // [END_EXCLUDE]
             })
@@ -154,6 +160,24 @@ class BookInfoMarket : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        var seller_account_button = findViewById<LinearLayout>(R.id.seller_account_layout)
+
+        seller_account_button.setOnClickListener {
+            if (myUser != null) {
+                if(myUser.contains(seller_account_button.seller_name_text_market.text)) {
+                    Toast.makeText(this@BookInfoMarket, "Visit the Account tab if you would like to see your own information.", Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+                    val intent = Intent(this, UserAccount::class.java)
+                    seller_account_button.seller_name_text_market.text
+                    intent.putExtra("account_name", seller_account_button.seller_name_text_market.text)
+                    startActivity(intent)
+                }
+            }
+
+        }
     }
 
     private fun initBookData()
@@ -165,7 +189,7 @@ class BookInfoMarket : AppCompatActivity() {
                 val title_textView: TextView = findViewById(R.id.book_title_text)
                 val author_textView: TextView = findViewById(R.id.book_author_text)
                 val price_textView: TextView = findViewById(R.id.price_text)
-                val seller_textView: TextView = findViewById(R.id.seller_name_text)
+                val seller_textView: TextView = findViewById(R.id.seller_name_text_market)
                 val seller_notes_textView: TextView = findViewById(R.id.book_notes_text)
 
                 title_textView.text = dataSnapshot.child("/title/").value.toString()

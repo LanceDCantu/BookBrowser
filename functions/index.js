@@ -27,6 +27,7 @@ function parseXML(data) {
 
     const book = xml.GoodreadsResponse.book[0]
     result.title = book.title[0];
+    result.author = book.authors[0];
     result.bookImageURL = book.image_url[0];
     result.description = book.description[0];
     result.reviews = book.reviews_widget[0];

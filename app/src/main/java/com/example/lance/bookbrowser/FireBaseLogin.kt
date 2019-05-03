@@ -89,7 +89,7 @@ class FireBaseLogin : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this@FireBaseLogin, MainSearchActivity::class.java)
                 startActivity(intent)
 
-                Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Successfully Logged in!", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(applicationContext, task.exception!!.message, Toast.LENGTH_SHORT).show()
             }

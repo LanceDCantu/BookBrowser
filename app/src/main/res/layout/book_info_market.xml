@@ -10,8 +10,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/navigation_book_store">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/navigation_book_market">
         <LinearLayout
 
             android:id="@+id/book_info"
@@ -58,18 +58,37 @@
                     android:textStyle="bold"/>
 
             <LinearLayout
+                    android:id="@+id/seller_account_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:focusable="true">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
                     android:text="Offered by: "
                     android:textSize="16sp"/>
+                <ImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+                        app:srcCompat="@drawable/baseline_account_circle_24"
+                        tools:src="@drawable/baseline_account_circle_24" />
                 <TextView
-                    android:id="@+id/seller_name_text"
+                    android:id="@+id/seller_name_text_market"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:text="error"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
@@ -78,6 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
                 <Button
                         android:id="@+id/contact_button"
@@ -139,6 +159,20 @@
                     android:text="Description: There is no description available for this book"
                     android:textSize="14sp"
                     android:layout_marginBottom="10dp"/>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"
+                    android:layout_marginBottom="5dp"
+            />
+
+
+            <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/reviews_market"
+            />
 
 
         </LinearLayout>

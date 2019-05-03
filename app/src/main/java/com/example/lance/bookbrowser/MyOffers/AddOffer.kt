@@ -105,6 +105,7 @@ class AddOffer : AppCompatActivity() {
         var notes: String = notes_edt.text.toString()
         var title: String = ""
         var author: String = ""
+        var authors: String = ""
         var seller: String? = myUser?.substringBefore("@", "error")
 
         fetchCloudBookInfo(isbn)
@@ -117,11 +118,17 @@ class AddOffer : AppCompatActivity() {
                 }
 
                 //get title and author store it
-                title = task.getResult()?.get("title") as String
-                //work on this
-                author = "Alexandre de Castro Alves"
+                title = task.result?.get("title") as String
 
-                var sending_temp = Temp("none", "none", "none","none", "none", "none")
+                var author_hash: HashMap <String,String> = task.result?.get("author") as HashMap<String, String>
+
+                var author_list: ArrayList<String> = author_hash["author"] as ArrayList<String>
+
+                var author_hash2: HashMap <String,String> = author_list[0] as HashMap<String, String>
+
+                author = author_hash2["name"].toString()
+
+                var sending_temp = Temp("none", "none", "none", "none", "none", "none")
 
                 sending_temp.isbn = isbn
                 sending_temp.asking_price = price

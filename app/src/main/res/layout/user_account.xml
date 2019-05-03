@@ -28,71 +28,28 @@
                     android:fillColor="@color/colorPrimary"
                     app:srcCompat="@drawable/baseline_account_circle_green_24"
                     tools:src="@drawable/baseline_account_circle_green_24"/>
-
-            <TextView
-                    android:id="@+id/change_picture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/change"
-                    android:textColor="#3366BB"
-                    android:textSize="12sp"
-                    android:clickable="true"
-                    android:focusable="true"/>
         </LinearLayout>
 
         <TextView
-                android:id="@+id/email"
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
+                android:text="Username"
                 android:textSize="13sp"
                 android:textStyle="bold"/>
 
         <TextView
-                android:id="@+id/email_text_input"
+                android:id="@+id/username_text_input"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:inputType="text"/>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal" android:gravity="center">
-            <Button
-                    android:id="@+id/change_password_button"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginRight="25dp"
-                    android:background="@drawable/rounded_button"
-                    android:textColor="@android:color/white"
-                    android:text="@string/change_password"
-                    android:textAllCaps="false"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:gravity="center"/>
-
-            <Button
-                    android:id="@+id/order_history_button"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="25dp"
-                    android:background="@drawable/rounded_button_grey"
-                    android:text="Order History"
-                    android:textAllCaps="false"
-                    style="@style/Widget.AppCompat.Button.Borderless"/>
-        </LinearLayout>
-
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/market_statistics"
+                android:text="Market Statistics"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
 
         <View
@@ -136,12 +93,14 @@
                     android:textSize="18sp"
                     android:textStyle="bold"/>
             <ImageView
+                    android:id="@+id/thumbs_up"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="10dp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/baseline_thumb_up_24"
-                    tools:src="@drawable/baseline_thumb_up_24"/>
+                    android:clickable="true"
+                    app:srcCompat="@drawable/outline_thumb_up_24"
+                    tools:src="@drawable/outline_thumb_up_24"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,12 +110,14 @@
                     android:text="@string/user_upvote_value"
                     android:textSize="20sp"/>
             <ImageView
+                    android:id="@+id/thumbs_down"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="10dp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/baseline_thumb_down_24"
-                    tools:src="@drawable/baseline_thumb_down_24"/>
+                    android:clickable="true"
+                    app:srcCompat="@drawable/outline_thumb_down_24"
+                    tools:src="@drawable/outline_thumb_down_24"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -170,7 +131,7 @@
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigation_account"
+            android:id="@+id/navigation_user_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="0dp"
